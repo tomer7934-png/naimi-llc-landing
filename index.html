@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NAIMI LLC — Sell Your Home Directly in Greater Cincinnati</title>
+  <meta name="description" content="Sell your home directly to a real buyer in Greater Cincinnati. No agents, no commissions, no strangers. A clear, respectful process from first call to closing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #1B3A7A;
+      --navy-dark: #0F2256;
+      --blue:      #5B9BD5;
+      --beige:     #D4B896;
+      --beige-lt:  #F7F4F0;
+      --white:     #FFFFFF;
+      --text:      #1A202C;
+      --text-sec:  #4A5568;
+      --border:    #E2D9CE;
+      --gold:      #F5A623;
+      --head:      'Playfair Display', Georgia, serif;
+      --body:      'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--body);
+      color: var(--text-sec);
+      background: #fff;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1,h2,h3 { font-family: var(--head); color: var(--navy); line-height: 1.2; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-block;
+      background: var(--navy);
+      color: #fff;
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: 16px;
+      padding: 15px 30px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      text-align: center;
+    }
+    .btn:hover { background: var(--navy-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(27,58,122,.22); }
+    .btn-lg { font-size: 17px; padding: 17px 36px; }
+    .btn-full { width: 100%; display: block; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: #fff;
+      box-shadow: 0 1px 10px rgba(0,0,0,.08);
+    }
+    .nav__in {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 13px 20px; max-width: 1120px; margin: 0 auto;
+    }
+    .logo__name  { font-family: var(--head); font-size: 20px; font-weight: 700; color: var(--navy); }
+    .logo__sub   { font-size: 9px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-top: 1px; }
+    .nav__right  { display: flex; align-items: center; gap: 16px; }
+    .nav__phone  { font-weight: 700; color: var(--navy); font-size: 15px; display: none; }
+    @media(min-width:600px){ .nav__phone { display: block; } }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      background: var(--navy);
+      padding: 56px 0 52px;
+      text-align: center;
+      overflow: hidden;
+    }
+    /* Single-family neighborhood street background */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1592595896551-12b371d546d5?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center 55%;
+      opacity: 0.22;
+    }
+    /* Gradient overlay — darker at top, lighter at bottom for depth */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg,
+        rgba(15,34,86,.55) 0%,
+        rgba(27,58,122,.40) 60%,
+        rgba(27,58,122,.65) 100%);
+    }
+    .hero__center {
+      position: relative; z-index: 1;
+      max-width: 860px; margin: 0 auto;
+    }
+    .hero__logo-block {
+      display: flex; flex-direction: column; align-items: center;
+      margin-bottom: 20px;
+    }
+    .hero__logo-icon { font-size: 52px; margin-bottom: 8px; }
+    .hero__logo-name {
+      font-family: var(--head); font-size: 38px; font-weight: 700;
+      color: #fff; letter-spacing: .04em;
+      margin-bottom: 14px;
+    }
+    @media(min-width:640px) { .hero__logo-name { font-size: 46px; } }
+    .hero__logo-sub {
+      font-size: 11px; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--beige);
+      margin-bottom: 2px;
+    }
+    .hero__divider {
+      width: 60px; height: 2px; background: var(--beige);
+      margin: 18px auto 28px; border-radius: 2px;
+    }
+    .hero__tag {
+      font-size: 11px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: rgba(255,255,255,.7);
+      margin-top: 3px; margin-bottom: 18px;
+    }
+    .hero__h1 {
+      font-size: 30px; font-weight: 700; color: #fff;
+      margin-bottom: 16px; line-height: 1.15; text-shadow: 0 2px 12px rgba(0,0,0,.3);
+    }
+    @media(min-width:640px)  { .hero__h1 { font-size: 42px; } }
+    @media(min-width:1024px) { .hero__h1 { font-size: 52px; } }
+
+    .hero__sub {
+      font-size: 16px; color: rgba(255,255,255,.82);
+      margin: 0 auto 30px; line-height: 1.75;
+      max-width: 580px;
+    }
+    .hero__btns {
+      display: flex; justify-content: center; align-items: center;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: #fff;
+      border: 2px solid rgba(255,255,255,.6); font-family: var(--body);
+      font-weight: 700; font-size: 16px; padding: 14px 28px;
+      border-radius: 8px; cursor: pointer;
+      transition: background .2s, border-color .2s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+    /* Beige CTA button on dark hero */
+    .btn-hero {
+      background: var(--beige); color: var(--navy-dark);
+      font-family: var(--body); font-weight: 700; font-size: 17px;
+      padding: 16px 36px; border-radius: 8px; border: none; cursor: pointer;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      display: inline-block;
+    }
+    .btn-hero:hover {
+      background: #c9a87c; transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    }
+
+    /* HERO FORM CARD (kept for potential future use) */
+    .hero__form-wrap { display: none; }
+    .form-card {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 16px; box-shadow: 0 8px 40px rgba(27,58,122,.12);
+      padding: 36px 32px; width: 100%;
+    }
+    .form-card__title {
+      font-family: var(--head); font-size: 22px; font-weight: 700;
+      color: var(--navy); margin-bottom: 6px;
+    }
+    .form-card__sub {
+      font-size: 13px; color: var(--text-sec); margin-bottom: 22px; line-height: 1.5;
+    }
+    .form-group { margin-bottom: 14px; }
+    .form-label {
+      display: block; font-size: 13px; font-weight: 600;
+      color: var(--text); margin-bottom: 5px;
+    }
+    .form-input {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-family: var(--body); font-size: 15px; color: var(--text);
+      background: #fff; outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .form-input::placeholder { color: #ADADAD; }
+    .form-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(91,155,213,.15); }
+    textarea.form-input { resize: vertical; min-height: 80px; }
+    .form-submit { margin-top: 18px; }
+    .form-note {
+      text-align: center; margin-top: 12px;
+      font-size: 12px; color: #9CA3AF; line-height: 1.5;
+    }
+    .form-note a { color: var(--navy); font-weight: 700; }
+
+    /* MOBILE CTA in hero */
+    .hero__mobile-cta {
+      display: flex; flex-direction: column; gap: 12px; margin-top: 4px;
+    }
+    @media(min-width:900px){ .hero__mobile-cta { display: none; } }
+    .hero__tel-link {
+      font-size: 15px; color: var(--text-sec); text-align: center;
+    }
+    .hero__tel-link a { color: var(--navy); font-weight: 700; }
+
+    /* ── STATS BAR ── */
+    .stats { background: var(--navy); padding: 28px 0; }
+    .stats__in {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+    @media(min-width:768px){ .stats__in { grid-template-columns: repeat(4, 1fr); } }
+    .stat__num {
+      font-family: var(--head);
+      font-size: 32px; font-weight: 700; color: var(--beige);
+      line-height: 1;
+    }
+    .stat__label { font-size: 12px; color: rgba(255,255,255,.7); margin-top: 4px; font-weight: 500; letter-spacing: .03em; }
+
+    /* ── SECTION HELPERS ── */
+    section { padding: 72px 0; }
+    .s-label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+    .s-title { font-size: 28px; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+    @media(min-width:768px){ .s-title { font-size: 36px; } }
+    .s-intro { font-size: 16px; color: var(--text-sec); line-height: 1.8; max-width: 640px; }
+    .s-head  { margin-bottom: 48px; }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    /* ── HOMES STRIP ── */
+    .homes { background: var(--white); padding: 56px 0; }
+    .homes__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media(min-width:600px){ .homes__grid { grid-template-columns: repeat(3, 1fr); } }
+    .home-img {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      min-height: 220px;
+      position: relative;
+      background: var(--beige-lt);
+    }
+    .home-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s;
+    }
+    .home-img:hover img { transform: scale(1.04); }
+    .home-img__label {
+      position: absolute; bottom: 12px; left: 12px;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(4px);
+      font-size: 12px; font-weight: 600; color: var(--navy);
+      padding: 4px 10px; border-radius: 20px;
+      letter-spacing: .04em;
+    }
+
+    /* ── WHO IT'S FOR ── */
+    .who { background: var(--beige-lt); }
+    .cards { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media(min-width:600px){ .cards { grid-template-columns: 1fr 1fr; } }
+    @media(min-width:960px){ .cards { grid-template-columns: repeat(3, 1fr); } }
+    .card {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 12px; padding: 26px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.05);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(27,58,122,.10); }
+    .card__ico   { font-size: 30px; margin-bottom: 12px; }
+    .card__title { font-family: var(--body); font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .card__body  { font-size: 14px; color: var(--text-sec); line-height: 1.7; }
+
+    .who__foot { text-align: center; margin-top: 44px; }
+    .who__note { font-style: italic; color: var(--text-sec); margin-bottom: 18px; font-size: 16px; }
+    .link-cta {
+      display: inline-block; font-size: 15px; font-weight: 700;
+      color: var(--navy); border-bottom: 2px solid var(--beige); padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
+    }
+    .link-cta:hover { color: var(--blue); border-color: var(--blue); }
+
+    /* ── PROCESS ── */
+    .process { background: var(--navy); padding: 72px 0; }
+    .process .s-label { color: var(--beige); }
+    .process .s-title { color: #fff; }
+    .process .s-intro { color: rgba(255,255,255,.72); }
+
+    .steps { display: grid; grid-template-columns: 1fr; gap: 40px; }
+    @media(min-width:768px){ .steps { grid-template-columns: repeat(3,1fr); gap: 0; } }
+
+    .step { padding-right: 32px; position: relative; }
+    .step:last-child { padding-right: 0; }
+    .step__num {
+      font-family: var(--head); font-size: 72px; font-weight: 700;
+      color: var(--beige); opacity: .3; line-height: 1; margin-bottom: 8px;
+    }
+    .step__title { font-family: var(--body); font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .step__body  { font-size: 14px; color: rgba(255,255,255,.68); line-height: 1.75; }
+    .step__line  {
+      display: none;
+      position: absolute; top: 36px; right: 0;
+      width: 80%; height: 2px;
+      background: repeating-linear-gradient(90deg, var(--beige) 0, var(--beige) 6px, transparent 6px, transparent 14px);
+      opacity: .3;
+    }
+    @media(min-width:768px){ .step__line { display: block; } }
+    .step:last-child .step__line { display: none; }
+
+    .process__note {
+      text-align: center; margin-top: 52px;
+      font-style: italic; font-size: 16px; color: rgba(255,255,255,.6);
+    }
+
+    /* ── TESTIMONIALS ── */
+    .reviews { background: var(--white); }
+    .reviews__grid {
+      display: grid; grid-template-columns: 1fr; gap: 24px;
+    }
+    @media(min-width:768px){ .reviews__grid { grid-template-columns: repeat(3,1fr); } }
+
+    .review-card {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 14px; padding: 30px 26px;
+      box-shadow: 0 3px 16px rgba(0,0,0,.06);
+    }
+    .stars { color: var(--gold); font-size: 18px; letter-spacing: 2px; margin-bottom: 14px; }
+    .review-text {
+      font-size: 15px; color: var(--text-sec);
+      line-height: 1.75; margin-bottom: 20px;
+      font-style: italic;
+    }
+    .reviewer { display: flex; align-items: center; gap: 12px; }
+    .reviewer__avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--navy); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 16px; flex-shrink: 0;
+    }
+    .reviewer__name  { font-size: 14px; font-weight: 700; color: var(--navy); }
+    .reviewer__loc   { font-size: 12px; color: #9CA3AF; margin-top: 2px; }
+
+    .reviews__summary {
+      text-align: center; margin-top: 44px;
+    }
+    .reviews__rating {
+      font-size: 20px; font-weight: 700; color: var(--navy); display: flex;
+      align-items: center; justify-content: center; gap: 8px; margin-bottom: 6px;
+    }
+    .reviews__rating .stars { font-size: 22px; margin: 0; }
+    .reviews__count { font-size: 14px; color: var(--text-sec); }
+
+    /* ── WHY DIRECT ── */
+    .why { background: var(--beige-lt); }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 14px; border: 2px solid var(--navy); box-shadow: 0 4px 28px rgba(27,58,122,.10); }
+    table { width: 100%; border-collapse: collapse; min-width: 580px; font-size: 14px; }
+    thead th {
+      background: var(--navy); color: #fff;
+      font-family: var(--body); font-weight: 700; font-size: 14px;
+      padding: 18px 20px; text-align: left;
+      border-right: 1px solid rgba(255,255,255,.12);
+    }
+    thead th:first-child { width: 18%; }
+    thead th.naimi-h {
+      background: var(--blue);
+      color: #fff;
+      border-right: none;
+      position: relative;
+    }
+    thead th.naimi-h::after {
+      content: '✓ Direct Buyer';
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.8);
+      margin-top: 3px;
+    }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody td {
+      padding: 14px 20px;
+      color: var(--text-sec); vertical-align: middle; background: #fff;
+      border-right: 1px solid var(--border);
+    }
+    tbody td:last-child { border-right: none; }
+    tbody tr:nth-child(even) td { background: #FAFAFA; }
+    tbody tr:nth-child(even) td.naimi { background: #E8F3FF; }
+    tbody td:first-child { font-weight: 700; color: var(--navy); font-size: 13px; white-space: nowrap; background: var(--beige-lt) !important; }
+    .naimi {
+      background: #EEF5FF !important;
+      border-left: 4px solid var(--blue) !important;
+      border-right: none !important;
+      font-weight: 700 !important;
+      color: var(--text) !important;
+    }
+    .ck { color: var(--blue); font-weight: 700; margin-right: 4px; }
+    .xk { color: #CBD5E0; font-weight: 700; margin-right: 4px; }
+    .why__close {
+      text-align: center; margin-top: 40px;
+      font-size: 17px; font-weight: 600; color: var(--navy);
+      max-width: 640px; margin-left: auto; margin-right: auto; line-height: 1.6;
+      padding: 24px 32px; background: #fff; border-radius: 12px; border: 1px solid var(--border);
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--white); }
+    .about__in {
+      display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center;
+    }
+    @media(min-width:900px){ .about__in { grid-template-columns: 58% 42%; } }
+
+    .about__body p { margin-bottom: 16px; font-size: 16px; line-height: 1.82; color: var(--text-sec); }
+    .about__body p:last-child { margin-bottom: 0; }
+    .about__body strong { color: var(--navy); }
+
+    .about__right { display: flex; flex-direction: column; gap: 20px; }
+    .about__img {
+      border-radius: 14px; overflow: hidden;
+      box-shadow: 0 8px 32px rgba(27,58,122,.12);
+      aspect-ratio: 4/3;
+    }
+    .about__img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── TRUST BAR ── */
+    .trust-bar { background: var(--navy); padding: 28px 0; }
+    .trust-bar__in {
+      display: flex; flex-direction: column; gap: 20px;
+      align-items: center; text-align: center;
+    }
+    @media(min-width:768px){
+      .trust-bar__in { flex-direction: row; justify-content: center; gap: 0; text-align: left; }
+    }
+    .tsig { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 13px; font-weight: 500; padding: 0 28px; }
+    .tsig__ico { font-size: 18px; flex-shrink: 0; }
+    @media(min-width:768px){
+      .tsig { border-right: 1px solid rgba(212,184,150,.3); }
+      .tsig:last-child { border-right: none; }
+    }
+
+    /* ── FAQ ── */
+    .faq { background: var(--beige-lt); }
+    .faq__list { max-width: 780px; margin: 0 auto; }
+    details { border-bottom: 1px solid var(--border); }
+    details:first-of-type { border-top: 1px solid var(--border); }
+    summary {
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; padding: 20px 0; list-style: none;
+      font-family: var(--body); font-size: 16px; font-weight: 600;
+      color: var(--navy); gap: 16px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: '+'; font-size: 22px; font-weight: 300; color: var(--blue); flex-shrink: 0; transition: transform .25s; }
+    details[open] summary::after { transform: rotate(45deg); }
+    .faq__ans { font-size: 15px; color: var(--text-sec); line-height: 1.8; padding-bottom: 20px; max-width: 660px; }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--white); }
+    .contact__card {
+      max-width: 600px; margin: 0 auto;
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 16px; box-shadow: 0 6px 36px rgba(27,58,122,.09);
+      padding: 44px 36px;
+    }
+    @media(max-width:600px){ .contact__card { padding: 28px 20px; } }
+    .contact__below {
+      text-align: center; margin-top: 16px;
+      font-size: 13px; color: #9CA3AF; line-height: 1.6;
+    }
+    .contact__below a { color: var(--navy); font-weight: 700; }
+
+    /* ── FOOTER ── */
+    .footer { background: var(--navy-dark); border-top: 3px solid var(--beige); padding: 44px 0 32px; }
+    .footer__in { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+    .footer__name { font-family: var(--head); font-size: 20px; font-weight: 700; color: #fff; }
+    .footer__sub  { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-top: 2px; }
+    .footer__tag  { font-size: 14px; color: rgba(255,255,255,.55); }
+    .footer__trust{ font-size: 12px; color: rgba(255,255,255,.35); font-style: italic; }
+    .footer__ph a { color: var(--blue); font-weight: 700; font-size: 15px; }
+    .footer__copy { font-size: 11px; color: rgba(255,255,255,.25); margin-top: 6px; }
+
+    /* ── FADE ANIMATION ── */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:none;} }
+    .fi   { animation: fadeUp .6s ease both; }
+    .fi-1 { animation-delay:.1s; }
+    .fi-2 { animation-delay:.2s; }
+
+    @media(max-width:768px){ section { padding: 52px 0; } }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav__in">
+    <div class="logo">
+      <div class="logo__name">NAIMI LLC</div>
+      <div class="logo__sub">Real Estate Investment &amp; Partnership</div>
+    </div>
+    <div class="nav__right">
+      <a href="tel:5134496085" class="nav__phone">(513) 449-6085</a>
+      <a href="#contact" class="btn" style="padding:11px 20px;font-size:14px;">Get a Direct Offer</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="container">
+    <div class="hero__center fi">
+
+      <!-- Logo block — big and centered in hero -->
+      <div class="hero__logo-block">
+        <div class="hero__logo-name">NAIMI LLC</div>
+        <div class="hero__logo-sub">Real Estate Investment &amp; Partnership &nbsp;·&nbsp; Greater Cincinnati</div>
+      </div>
+
+      <p class="hero__tag">Direct Home Buyers</p>
+      <h1 class="hero__h1">
+        Sell Your Home Directly<br>to a Real Buyer.
+      </h1>
+      <p class="hero__sub">
+        No agents. No commissions. No strangers walking through your property.<br>
+        A clear, respectful process — from your first call to closing day.
+      </p>
+      <div class="hero__btns">
+        <a href="#contact" class="btn-hero">Get a Direct Offer →</a>
+        <a href="tel:5134496085" class="btn-ghost">📞 &nbsp;(513) 449-6085</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══ STATS BAR ══════════════════════════════════════════════════ -->
+<div class="stats">
+  <div class="container">
+    <div class="stats__in">
+      <div>
+        <div class="stat__num">0%</div>
+        <div class="stat__label">Agent Commission</div>
+      </div>
+      <div>
+        <div class="stat__num">As-Is</div>
+        <div class="stat__label">No Repairs Needed</div>
+      </div>
+      <div>
+        <div class="stat__num">Direct</div>
+        <div class="stat__label">We Are the Buyer</div>
+      </div>
+      <div>
+        <div class="stat__num">100%</div>
+        <div class="stat__label">Title Company Closings</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HOME PHOTOS ════════════════════════════════════════════════ -->
+<div class="homes">
+  <div class="container">
+    <div class="s-head text-center" style="margin-bottom:36px;">
+      <p class="s-label">Greater Cincinnati Area</p>
+      <h2 class="s-title">We Buy Homes Like These</h2>
+      <p class="s-intro mx-auto" style="text-align:center;">Move-in ready or in need of work — we buy homes as-is throughout Greater Cincinnati and the surrounding area.</p>
+    </div>
+    <div class="homes__grid">
+      <div class="home-img">
+        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=700&q=80"
+          alt="Cincinnati home — purchased as-is" loading="lazy" />
+        <span class="home-img__label">Cincinnati, OH</span>
+      </div>
+      <div class="home-img">
+        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=700&q=80"
+          alt="Greater Cincinnati home" loading="lazy" />
+        <span class="home-img__label">Norwood, OH</span>
+      </div>
+      <div class="home-img">
+        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=700&q=80"
+          alt="Cincinnati neighborhood home" loading="lazy" />
+        <span class="home-img__label">Anderson Township, OH</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ WHO IT'S FOR ═══════════════════════════════════════════════ -->
+<section class="who" id="who">
+  <div class="container">
+    <div class="s-head">
+      <p class="s-label">Is This You?</p>
+      <h2 class="s-title">You're in the Right Place</h2>
+      <p class="s-intro">You don't have to fit a mold to work with us. If any of these sound familiar — we might be exactly what you're looking for.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card__ico">🏠</div><p class="card__title">You want to sell without the long wait</p><p class="card__body">The thought of 3–6 months of showings and uncertainty just doesn't work for you right now.</p></div>
+      <div class="card"><div class="card__ico">💸</div><p class="card__title">You'd rather keep the commission</p><p class="card__body">Why pay 6–8% to an agent when you can sell directly — and keep that money in your pocket?</p></div>
+      <div class="card"><div class="card__ico">🚪</div><p class="card__title">You don't want strangers in your home</p><p class="card__body">Your home is personal. Dozens of people touring it every weekend doesn't feel right.</p></div>
+      <div class="card"><div class="card__ico">🤝</div><p class="card__title">You want to talk to the actual buyer</p><p class="card__body">You've seen the signs and ads. You just want to know you're talking to the real buyer — not a middleman.</p></div>
+      <div class="card"><div class="card__ico">🔧</div><p class="card__title">Your property needs work — we don't care</p><p class="card__body">Fire damage, deferred maintenance, outdated systems, hoarder situations — we buy in <strong>any condition, as-is</strong>. No repairs. No cleaning. Nothing.</p></div>
+      <div class="card"><div class="card__ico">📦</div><p class="card__title">Life brought you to this moment</p><p class="card__body">Inherited a property. Tired landlord. Relocating. Whatever the reason — we're here to help, not judge.</p></div>
+    </div>
+    <div class="who__foot">
+      <p class="who__note">If you're nodding your head — let's have a conversation. No pressure, no obligation.</p>
+      <a href="tel:5134496085" class="link-cta">Call us now → (513) 449-6085</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══════════════════════════════════════════════ -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="s-head text-center">
+      <p class="s-label">Simple by design</p>
+      <h2 class="s-title" style="color:#fff;">How It Works — Simple as That</h2>
+      <p class="s-intro mx-auto" style="text-align:center;">Three steps. One conversation at a time. No pressure at any point.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step__line"></div><div class="step__num">01</div><p class="step__title">Tell us about your home</p><p class="step__body">Reach out by phone or form. A few simple questions — no inspection, no obligation. Just a conversation.</p></div>
+      <div class="step"><div class="step__line"></div><div class="step__num">02</div><p class="step__title">Receive a direct offer</p><p class="step__body">A clear, fair offer — no lowball tactics, no hidden fees. An honest number you can say yes or no to.</p></div>
+      <div class="step"><div class="step__num">03</div><p class="step__title">Close on your timeline</p><p class="step__body">We move forward on your schedule, working with a licensed title company until you walk away with peace of mind.</p></div>
+    </div>
+    <p class="process__note">That's it. No surprises. No runaround. Just a process that respects your time and your home.</p>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══════════════════════════════════════════════ -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="s-head text-center">
+      <p class="s-label">What Homeowners Say</p>
+      <h2 class="s-title">Real Sellers. Real Experiences.</h2>
+      <p class="s-intro mx-auto" style="text-align:center;">Every homeowner's situation is different. Here's what a few of them said about working with us.</p>
+    </div>
+
+    <div class="reviews__grid">
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"I inherited my mother's home and had no idea what to do with it. NAIMI LLC made the whole process feel manageable. They were patient, explained everything clearly, and never pressured me. We closed in three weeks. I couldn't have asked for a better experience."</p>
+        <div class="reviewer">
+          <div class="reviewer__avatar">MS</div>
+          <div>
+            <div class="reviewer__name">Margaret S.</div>
+            <div class="reviewer__loc">Cincinnati, OH · Inherited Property</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"We'd been renting out our property for years and just got tired of dealing with everything that comes with it. We called NAIMI LLC on a Tuesday, had an offer by Thursday, and closed without any of the usual headaches. Straightforward and professional the whole way."</p>
+        <div class="reviewer">
+          <div class="reviewer__avatar">DR</div>
+          <div>
+            <div class="reviewer__name">David & Karen R.</div>
+            <div class="reviewer__loc">Norwood, OH · Tired Landlords</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"I was relocating for work and needed to sell fast. I was nervous about dealing with investors, but NAIMI LLC was completely different from what I expected — honest, respectful, and easy to communicate with. They worked around my timeline and made it stress-free."</p>
+        <div class="reviewer">
+          <div class="reviewer__avatar">JT</div>
+          <div>
+            <div class="reviewer__name">James T.</div>
+            <div class="reviewer__loc">Anderson Township, OH · Relocation</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="reviews__summary">
+      <div class="reviews__rating">
+        <span class="stars">★★★★★</span>
+        <span>5.0 out of 5</span>
+      </div>
+      <p class="reviews__count">Based on <strong>125 homeowner reviews</strong> · Greater Cincinnati Area</p>
+      <div style="margin-top:28px;">
+        <a href="#contact" class="btn btn-lg">Get Your Direct Offer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY DIRECT ═════════════════════════════════════════════════ -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="s-head">
+      <p class="s-label">The Honest Comparison</p>
+      <h2 class="s-title">Why Some Sellers Choose to Skip the Traditional Process</h2>
+      <p class="s-intro">We're not here to say the traditional way is wrong. But for many sellers, it's more complicated and expensive than it needs to be.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Traditional Listing</th>
+            <th>Wholesalers</th>
+            <th class="naimi-h">NAIMI LLC</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Who actually buys?</td>
+            <td><span class="xk">✗</span> Unknown buyer at closing</td>
+            <td><span class="xk">✗</span> Another investor — you never meet them</td>
+            <td class="naimi"><span class="ck">✓</span> Us — we are the final buyer</td>
+          </tr>
+          <tr>
+            <td>Fees &amp; commissions</td>
+            <td><span class="xk">✗</span> 6–8% agent commission + closing costs</td>
+            <td><span class="xk">✗</span> Wholesaler profit baked into price</td>
+            <td class="naimi"><span class="ck">✓</span> Zero — no fees, no commissions</td>
+          </tr>
+          <tr>
+            <td>Repairs required?</td>
+            <td><span class="xk">✗</span> Must fix before listing</td>
+            <td>Varies — depends on end buyer</td>
+            <td class="naimi"><span class="ck">✓</span> Never — any condition, as-is</td>
+          </tr>
+          <tr>
+            <td>Showings</td>
+            <td><span class="xk">✗</span> Dozens of strangers in your home</td>
+            <td>Usually none</td>
+            <td class="naimi"><span class="ck">✓</span> None — ever</td>
+          </tr>
+          <tr>
+            <td>Timeline</td>
+            <td><span class="xk">✗</span> 3–6+ months, uncertain</td>
+            <td>Fast, but unpredictable</td>
+            <td class="naimi"><span class="ck">✓</span> Clear — on your schedule</td>
+          </tr>
+          <tr>
+            <td>Your deal goes to</td>
+            <td><span class="xk">✗</span> Multiple unknown buyers</td>
+            <td><span class="xk">✗</span> Flipped to an end investor</td>
+            <td class="naimi"><span class="ck">✓</span> Stays with us — no middlemen</td>
+          </tr>
+          <tr>
+            <td>Closing handled by</td>
+            <td>Licensed title company</td>
+            <td>Sometimes unclear</td>
+            <td class="naimi"><span class="ck">✓</span> Always a licensed title company</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="why__close">The difference is simple: Wholesalers make a profit by flipping your contract to someone else. <strong>We don't do that. We are the buyer.</strong> No middlemen. No surprises. Just us — from first call to closing.</p>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══════════════════════════════════════════════════════ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about__in">
+      <div class="about__text">
+        <p class="s-label">Who We Are</p>
+        <h2 class="s-title">Real People. Real Buyers. Based in Greater Cincinnati.</h2>
+        <div class="about__body" style="margin-top:24px;">
+          <p>At NAIMI LLC, we're not a call center. We're not a nationwide wholesaling operation.</p>
+          <p>We're a small, local real estate investment company that buys homes directly — and we take that responsibility seriously.</p>
+          <p>When you reach out to us, you're talking to the actual buyer. Someone who will listen, be straight with you, and walk with you through the entire process — from your first question to the day you close.</p>
+          <p>We work exclusively in the Greater Cincinnati area because we know this market, we care about this community, and we believe every homeowner deserves a process built around their situation — not ours.</p>
+          <p>Every transaction is closed through a licensed title company. Your interests are protected, the paperwork is handled correctly, and there are no surprises at the finish line.</p>
+          <p><strong>We don't just buy homes. We help people move forward.</strong></p>
+        </div>
+        <div style="margin-top:28px;">
+          <a href="#contact" class="btn">Talk to Us About Your Home</a>
+        </div>
+      </div>
+
+      <div class="about__right">
+        <div class="about__img">
+          <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=700&q=80"
+            alt="Cincinnati area home — direct purchase" loading="lazy" />
+        </div>
+        <div style="background:var(--beige-lt);border-radius:12px;padding:24px;text-align:center;border:1px solid var(--border);">
+          <div style="font-family:var(--head);font-size:22px;font-weight:700;color:var(--navy);">NAIMI LLC</div>
+          <div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-top:5px;">Direct Home Buyers · Cincinnati, OH</div>
+          <div style="height:1px;background:var(--border);margin:16px 0;"></div>
+          <a href="tel:5134496085" style="font-weight:700;color:var(--navy);font-size:16px;">(513) 449-6085</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trust-bar" style="margin-top:64px;">
+    <div class="container">
+      <div class="trust-bar__in">
+        <div class="tsig"><span class="tsig__ico">📍</span><span>Based in Greater Cincinnati, Ohio</span></div>
+        <div class="tsig"><span class="tsig__ico">🤝</span><span>We are the direct buyer — not a middleman</span></div>
+        <div class="tsig"><span class="tsig__ico">🏛️</span><span>Every deal closed through a licensed title company</span></div>
+        <div class="tsig"><span class="tsig__ico">📞</span><span>Real conversations — <a href="tel:5134496085" style="color:var(--blue);font-weight:700;">(513) 449-6085</a></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══════════════════════════════════════════════════════ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="s-head text-center">
+      <p class="s-label">No Runaround</p>
+      <h2 class="s-title">Common Questions — Straight Answers</h2>
+    </div>
+    <div class="faq__list">
+      <details><summary>Are you actually the buyer, or will my home be passed to someone else?</summary><p class="faq__ans">We are the direct, final buyer. NAIMI LLC purchases homes for our own portfolio — we are not wholesalers, and we don't resell your contract to other investors. When you work with us, you work with us.</p></details>
+      <details><summary>How do you come up with your offer?</summary><p class="faq__ans">We look at the property's current condition, comparable sales in your area, and what repairs or updates would be needed. Our goal is a fair offer that works for both sides — not a lowball number designed to take advantage of your situation.</p></details>
+      <details><summary>Do I need to make repairs or clean up before selling?</summary><p class="faq__ans">No. We buy homes as-is. You don't need to fix anything, clean anything out, or make the home "show ready." Leave what you don't want — we'll handle the rest.</p></details>
+      <details><summary>How long does the process take?</summary><p class="faq__ans">It depends on your timeline, not ours. We can move quickly when needed, or give you the space you need. Once both sides agree on terms, closing typically takes a few weeks through a licensed title company.</p></details>
+      <details><summary>Is there any cost or obligation when I reach out?</summary><p class="faq__ans">None at all. Reaching out is free, and so is the offer. There's no pressure to accept, and no fee if you decide it's not the right fit. We'd rather have an honest conversation.</p></details>
+      <details><summary>What types of properties do you buy?</summary><p class="faq__ans">Single-family homes throughout the Greater Cincinnati area — move-in ready or in need of significant work. Inherited properties, vacant homes, rentals, homes with deferred maintenance — all welcome.</p></details>
+      <details><summary>What does "closing through a title company" mean for me?</summary><p class="faq__ans">A neutral, licensed third party handles the legal transfer of the property. Your ownership is protected, documents are properly executed, and you receive your funds securely. Same as any standard real estate transaction — just without the agent fees.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ════════════════════════════════════════════════════ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="s-head text-center">
+      <p class="s-label">Let's Start the Conversation</p>
+      <h2 class="s-title">Ready to Talk?</h2>
+      <p class="s-intro mx-auto" style="text-align:center;">Tell us about your home and we'll reach out within 24 hours. No pressure. No obligation.</p>
+    </div>
+
+    <!-- Motivation box -->
+    <div style="max-width:600px;margin:0 auto 28px;background:var(--beige-lt);border:1px solid var(--border);border-radius:14px;padding:28px 28px 24px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;">Why reach out?</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <span style="font-size:18px;flex-shrink:0;">✅</span>
+          <span style="font-size:14px;color:var(--text-sec);line-height:1.5;">Completely free — no cost, no commitment</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <span style="font-size:18px;flex-shrink:0;">✅</span>
+          <span style="font-size:14px;color:var(--text-sec);line-height:1.5;">We respond within 24 hours</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <span style="font-size:18px;flex-shrink:0;">✅</span>
+          <span style="font-size:14px;color:var(--text-sec);line-height:1.5;">No repairs, no cleaning — any condition</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <span style="font-size:18px;flex-shrink:0;">✅</span>
+          <span style="font-size:14px;color:var(--text-sec);line-height:1.5;">You talk directly to the buyer — not an assistant</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <span style="font-size:18px;flex-shrink:0;">✅</span>
+          <span style="font-size:14px;color:var(--text-sec);line-height:1.5;">No agent fees — keep more of your money</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;">
+          <span style="font-size:18px;flex-shrink:0;">✅</span>
+          <span style="font-size:14px;color:var(--text-sec);line-height:1.5;">Say no anytime — zero pressure, ever</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact__card">
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label class="form-label" for="c-name">First &amp; Last Name <span style="color:#E53E3E;">*</span></label>
+          <input class="form-input" type="text" id="c-name" name="name" placeholder="Your full name" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="c-addr">Property Address <span style="color:#E53E3E;">*</span></label>
+          <input class="form-input" type="text" id="c-addr" name="address" placeholder="Street address, Cincinnati area" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="c-phone">Phone Number <span style="color:#E53E3E;">*</span></label>
+          <input class="form-input" type="tel" id="c-phone" name="phone" placeholder="(XXX) XXX-XXXX" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="c-email">Email <span style="color:#9CA3AF;font-weight:400;">(optional)</span></label>
+          <input class="form-input" type="email" id="c-email" name="email" placeholder="your@email.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="c-msg">Anything you'd like us to know?</label>
+          <textarea class="form-input" id="c-msg" name="message" placeholder="Share any details about the property or your situation — completely optional."></textarea>
+        </div>
+        <div class="form-submit" style="margin-top:24px;">
+          <button type="submit" class="btn btn-full" style="font-size:17px;padding:17px;">Get a Direct Offer →</button>
+        </div>
+      </form>
+      <p class="contact__below">
+        Prefer to call? <a href="tel:5134496085">(513) 449-6085</a><br>
+        No scripts. No salespeople. Just us.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__in">
+      <div>
+        <div class="footer__name">NAIMI LLC</div>
+        <div class="footer__sub">Real Estate Investment &amp; Partnership</div>
+      </div>
+      <p class="footer__tag">Direct Home Buyers · Greater Cincinnati, Ohio</p>
+      <p class="footer__trust">Every transaction closed through a licensed title company.</p>
+      <p class="footer__ph"><a href="tel:5134496085">(513) 449-6085</a></p>
+      <p class="footer__copy">&copy; 2026 NAIMI LLC. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ STICKY MOBILE CTA ════════════════════════════════════════ -->
+<div style="
+  position:fixed; bottom:0; left:0; right:0; z-index:200;
+  background:var(--navy); padding:14px 20px;
+  display:flex; gap:10px; align-items:center; justify-content:center;
+  box-shadow:0 -3px 16px rgba(0,0,0,.18);
+">
+  <a href="#contact" class="btn" style="flex:1;max-width:220px;padding:13px 16px;font-size:15px;text-align:center;">Get a Direct Offer</a>
+  <a href="tel:5134496085" style="flex:1;max-width:180px;background:rgba(255,255,255,.1);color:#fff;font-weight:700;font-size:15px;text-align:center;padding:13px 16px;border-radius:8px;border:1.5px solid rgba(255,255,255,.25);">📞 Call Us</a>
+</div>
+<style>
+  /* hide sticky bar on desktop */
+  @media(min-width:900px){
+    [style*="position:fixed; bottom:0"] { display: none !important; }
+  }
+  /* add bottom padding on mobile so footer isn't hidden */
+  @media(max-width:900px){ body { padding-bottom: 80px; } }
+</style>
+
+</body>
+</html>

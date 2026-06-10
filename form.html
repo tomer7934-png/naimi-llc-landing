@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get My Offer in 3 Minutes — NAIMI LLC</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #1B3A7A;
+      --navy-dark: #0F2256;
+      --blue:      #5B9BD5;
+      --beige:     #D4B896;
+      --beige-lt:  #F7F4F0;
+      --white:     #FFFFFF;
+      --text:      #1A202C;
+      --muted:     #6B7280;
+      --border:    #E2D9CE;
+      --danger:    #EF4444;
+      --success:   #22C55E;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--white);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ─────────────────────────────── */
+    .hdr {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      height: 56px;
+    }
+    .hdr__in {
+      max-width: 720px; margin: 0 auto; padding: 0 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .hdr__logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; font-weight: 700; color: var(--navy);
+      text-decoration: none;
+    }
+    .hdr__phone {
+      color: var(--navy); font-weight: 700; font-size: 14px;
+      text-decoration: none; display: flex; align-items: center; gap: 6px;
+    }
+
+    /* ── PROGRESS ────────────────────────────── */
+    .prog {
+      position: fixed; top: 56px; left: 0; right: 0; z-index: 199;
+      height: 5px; background: var(--beige-lt);
+    }
+    .prog__fill {
+      height: 100%; background: var(--navy);
+      transition: width 0.4s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ── STEP WRAPPER ────────────────────────── */
+    .steps-wrap {
+      padding-top: 61px;
+      padding-bottom: 100px;
+      min-height: 100vh;
+    }
+
+    .step {
+      display: none;
+      padding: 40px 20px 24px;
+      max-width: 680px;
+      margin: 0 auto;
+      animation: fadeUp .28s ease both;
+    }
+    .step.active { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .step__num {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 10px;
+    }
+    .step__q {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; font-weight: 700; color: var(--navy);
+      line-height: 1.3; margin-bottom: 6px;
+    }
+    @media(min-width:600px){ .step__q { font-size: 30px; } }
+    .step__hint {
+      font-size: 14px; color: var(--muted); margin-bottom: 28px; line-height: 1.6;
+    }
+
+    /* ── OPTION CARDS ────────────────────────── */
+    .opts { display: grid; gap: 12px; }
+    .opts--2 { grid-template-columns: 1fr 1fr; }
+    .opts--3 { grid-template-columns: repeat(3, 1fr); }
+
+    .opt {
+      border: 2.5px solid var(--border); border-radius: 14px;
+      padding: 18px 16px; cursor: pointer; background: var(--white);
+      text-align: center; transition: border-color .15s, background .15s, transform .15s;
+      user-select: none; -webkit-tap-highlight-color: transparent;
+      position: relative;
+    }
+    .opt:hover { border-color: var(--blue); background: #F0F6FF; transform: translateY(-1px); }
+    .opt.sel   { border-color: var(--navy); background: #EEF3FF; }
+    .opt.sel::after {
+      content: '✓';
+      position: absolute; top: 10px; right: 12px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--navy); color: #fff;
+      font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .opt__img {
+      width: 100%; height: 110px; object-fit: cover;
+      border-radius: 9px; margin-bottom: 10px;
+      background: var(--beige-lt);
+    }
+    @media(min-width:600px){ .opt__img { height: 130px; } }
+
+    .opt__icon {
+      font-size: 38px; display: block; margin-bottom: 8px; line-height: 1;
+    }
+    .opt__label {
+      font-weight: 700; font-size: 15px; color: var(--navy); line-height: 1.3;
+    }
+    .opt__desc {
+      font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.45;
+    }
+
+    /* List-style opts (year built) */
+    .opts--list .opt {
+      text-align: left; padding: 16px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .opts--list .opt__label { font-size: 16px; }
+    .opts--list .opt__desc  { margin-top: 0; margin-left: 8px; }
+
+    /* ── NUMBER BUTTONS ──────────────────────── */
+    .nums { display: flex; gap: 10px; flex-wrap: wrap; }
+    .num {
+      width: 68px; height: 68px;
+      border: 2.5px solid var(--border); border-radius: 12px;
+      font-size: 20px; font-weight: 700; color: var(--navy);
+      background: var(--white); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .15s; -webkit-tap-highlight-color: transparent;
+    }
+    @media(min-width:400px){ .num { width: 74px; height: 74px; font-size: 22px; } }
+    .num:hover { border-color: var(--blue); background: #F0F6FF; }
+    .num.sel   { border-color: var(--navy); background: var(--navy); color: #fff; }
+
+    /* ── TEXT INPUTS ─────────────────────────── */
+    .f-group { margin-bottom: 16px; }
+    .f-label {
+      display: block; font-size: 13px; font-weight: 700;
+      color: var(--text); margin-bottom: 6px;
+    }
+    .f-input {
+      width: 100%; padding: 16px 16px;
+      border: 2px solid var(--border); border-radius: 12px;
+      font-family: 'Inter', sans-serif; font-size: 16px; color: var(--text);
+      background: var(--white); outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      appearance: none;
+    }
+    .f-input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(91,155,213,.18);
+    }
+    .f-input.err { border-color: var(--danger); }
+    .f-input.confirmed { border-color: var(--success); }
+    .f-input::placeholder { color: #ADADAD; }
+    textarea.f-input { resize: vertical; min-height: 90px; }
+
+    /* Address status messages */
+    .addr-msg {
+      display: none; margin-top: 8px;
+      font-size: 13px; font-weight: 600;
+      align-items: center; gap: 6px;
+    }
+    .addr-msg.ok  { display: flex; color: var(--success); }
+    .addr-msg.bad { display: flex; color: var(--danger); }
+
+    /* Price input */
+    .price-wrap {
+      display: flex; align-items: center;
+      border: 2px solid var(--border); border-radius: 12px;
+      overflow: hidden; background: var(--white);
+      transition: border-color .2s;
+    }
+    .price-wrap:focus-within { border-color: var(--blue); }
+    .price-prefix {
+      padding: 0 14px 0 16px;
+      font-size: 22px; font-weight: 700; color: var(--navy);
+      flex-shrink: 0;
+    }
+    .price-input {
+      border: none !important; border-radius: 0 !important;
+      font-size: 26px !important; font-weight: 700 !important;
+      color: var(--navy) !important; padding: 18px 16px 18px 0 !important;
+      box-shadow: none !important;
+    }
+    .price-input:focus { box-shadow: none !important; }
+
+    /* Custom address autocomplete dropdown */
+    .addr-wrap { position: relative; }
+    .addr-dropdown {
+      display: none;
+      position: absolute; left: 0; right: 0; top: calc(100% + 4px);
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.12);
+      z-index: 500;
+      overflow: hidden;
+    }
+    .addr-opt {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 12px 16px; cursor: pointer;
+      border-bottom: 1px solid var(--beige-lt);
+      transition: background .12s;
+    }
+    .addr-opt:last-child { border-bottom: none; }
+    .addr-opt:hover { background: var(--beige-lt); }
+    .addr-opt__pin { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .addr-opt__main { font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.3; }
+    .addr-opt__full { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+    .addr-dropdown { max-height: 320px; overflow-y: auto; }
+
+    /* ── BOTTOM NAV ──────────────────────────── */
+    .nav-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+      background: var(--white); border-top: 1px solid var(--border);
+      padding: 12px 20px;
+    }
+    .nav-bar__in {
+      max-width: 680px; margin: 0 auto;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .btn-back {
+      width: 50px; height: 52px; flex-shrink: 0;
+      border: 2px solid var(--border); border-radius: 10px;
+      background: var(--white); color: var(--muted);
+      font-size: 20px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .15s;
+    }
+    .btn-back:hover { border-color: var(--navy); color: var(--navy); }
+    .btn-back[disabled] { opacity: 0; pointer-events: none; }
+
+    .btn-next, .btn-submit {
+      flex: 1; padding: 16px;
+      background: var(--navy); color: #fff;
+      border: none; border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 17px; font-weight: 700; cursor: pointer;
+      transition: background .15s, transform .1s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-next:hover, .btn-submit:hover { background: var(--navy-dark); }
+    .btn-next:active, .btn-submit:active { transform: scale(.98); }
+    .btn-submit { background: #22A047; }
+    .btn-submit:hover { background: #1a7d38; }
+    .btn-submit.loading { background: #9CA3AF; pointer-events: none; }
+
+    /* ── THANK YOU ───────────────────────────── */
+    #thankYou {
+      display: none;
+      min-height: 100vh;
+      padding: 80px 20px 40px;
+      text-align: center;
+    }
+    #thankYou.show { display: block; }
+    .ty__check {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--success); color: #fff;
+      font-size: 36px; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .ty__h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px; color: var(--navy); margin-bottom: 14px;
+    }
+    @media(min-width:600px){ .ty__h1 { font-size: 36px; } }
+    .ty__p {
+      font-size: 17px; color: var(--muted); line-height: 1.75;
+      max-width: 480px; margin: 0 auto 28px;
+    }
+    .ty__box {
+      max-width: 400px; margin: 0 auto 24px;
+      background: var(--beige-lt); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px;
+    }
+    .ty__box p { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+    .ty__box a {
+      font-size: 24px; font-weight: 800; color: var(--navy);
+      text-decoration: none; letter-spacing: -.01em;
+    }
+    .ty__back {
+      display: inline-block; margin-top: 10px;
+      color: var(--blue); font-size: 14px; font-weight: 600;
+      text-decoration: none;
+    }
+    .ty__back:hover { text-decoration: underline; }
+
+    /* ── SKIP LINK ───────────────────────────── */
+    .skip {
+      text-align: right; margin-top: 10px;
+      font-size: 13px; color: var(--muted);
+    }
+    .skip a { color: var(--blue); text-decoration: none; font-weight: 500; }
+    .skip a:hover { text-decoration: underline; }
+
+    /* ── TRUST BAR ───────────────────────────── */
+    .trust {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-bottom: 24px;
+    }
+    .trust__item {
+      font-size: 12px; color: var(--muted);
+      display: flex; align-items: center; gap: 5px;
+    }
+    .trust__item span { color: var(--success); font-size: 14px; }
+
+    @media(max-width:400px) {
+      .opts--2 { grid-template-columns: 1fr 1fr; }
+      .opt__img { height: 85px; }
+      .num { width: 58px; height: 58px; font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="hdr">
+  <div class="hdr__in">
+    <a href="/" class="hdr__logo">NAIMI LLC</a>
+    <a href="tel:5134496085" class="hdr__phone">📞 (513) 449-6085</a>
+  </div>
+</header>
+
+<!-- Progress bar -->
+<div class="prog"><div class="prog__fill" id="progFill" style="width:11%"></div></div>
+
+<!-- Steps -->
+<div class="steps-wrap" id="stepsWrap">
+
+  <!-- ── STEP 1: Address ── -->
+  <div class="step active" id="s1">
+    <div class="step__num">Step 1 of 9</div>
+    <h1 class="step__q">What's the address of the property you'd like to sell?</h1>
+    <p class="step__hint">Enter the full address so we can look up your area's market data.</p>
+    <div class="trust">
+      <div class="trust__item"><span>✓</span> Free — no obligation</div>
+      <div class="trust__item"><span>✓</span> Takes about 3 minutes</div>
+      <div class="trust__item"><span>✓</span> No sales pressure</div>
+    </div>
+    <div class="f-group">
+      <label class="f-label" for="inp-addr">Property Address</label>
+      <div class="addr-wrap">
+        <input type="text" id="inp-addr" class="f-input"
+          placeholder="Start typing your address..."
+          autocomplete="new-password" />
+        <div class="addr-dropdown" id="addrDropdown"></div>
+      </div>
+      <div class="addr-msg" id="addrOk">✓ Address confirmed</div>
+      <div class="addr-msg" id="addrErr">⚠ Please select your address from the dropdown</div>
+    </div>
+  </div>
+
+  <!-- ── STEP 2: Property Type ── -->
+  <div class="step" id="s2">
+    <div class="step__num">Step 2 of 9</div>
+    <h1 class="step__q">What type of property is it?</h1>
+    <p class="step__hint">Tap to select — we'll move to the next question automatically.</p>
+    <div class="opts opts--2">
+      <div class="opt" data-s="2" data-v="Single Family Home" onclick="pick(this)">
+        <span class="opt__icon">🏠</span>
+        <div class="opt__label">Single Family Home</div>
+      </div>
+      <div class="opt" data-s="2" data-v="Duplex / Multi-Unit" onclick="pick(this)">
+        <span class="opt__icon">🏘️</span>
+        <div class="opt__label">Duplex / Multi-Unit</div>
+      </div>
+      <div class="opt" data-s="2" data-v="Condo / Townhouse" onclick="pick(this)">
+        <span class="opt__icon">🏢</span>
+        <div class="opt__label">Condo / Townhouse</div>
+      </div>
+      <div class="opt" data-s="2" data-v="Land / Vacant Lot" onclick="pick(this)">
+        <span class="opt__icon">🌿</span>
+        <div class="opt__label">Land / Vacant Lot</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 3: Bedrooms ── -->
+  <div class="step" id="s3">
+    <div class="step__num">Step 3 of 9</div>
+    <h1 class="step__q">How many bedrooms?</h1>
+    <p class="step__hint">Select the total number of bedrooms in the property.</p>
+    <div class="nums">
+      <button class="num" data-s="3" data-v="1" onclick="pickNum(this)">1</button>
+      <button class="num" data-s="3" data-v="2" onclick="pickNum(this)">2</button>
+      <button class="num" data-s="3" data-v="3" onclick="pickNum(this)">3</button>
+      <button class="num" data-s="3" data-v="4" onclick="pickNum(this)">4</button>
+      <button class="num" data-s="3" data-v="5+" onclick="pickNum(this)">5+</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 4: Bathrooms ── -->
+  <div class="step" id="s4">
+    <div class="step__num">Step 4 of 9</div>
+    <h1 class="step__q">How many bathrooms?</h1>
+    <p class="step__hint">Include full and half bathrooms.</p>
+    <div class="nums">
+      <button class="num" data-s="4" data-v="1" onclick="pickNum(this)">1</button>
+      <button class="num" data-s="4" data-v="1.5" onclick="pickNum(this)">1½</button>
+      <button class="num" data-s="4" data-v="2" onclick="pickNum(this)">2</button>
+      <button class="num" data-s="4" data-v="2.5" onclick="pickNum(this)">2½</button>
+      <button class="num" data-s="4" data-v="3+" onclick="pickNum(this)">3+</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 5: Condition ── -->
+  <div class="step" id="s5">
+    <div class="step__num">Step 5 of 9</div>
+    <h1 class="step__q">What's the current condition of the property?</h1>
+    <p class="step__hint">Be honest — we buy homes in any condition, as-is.</p>
+    <div class="opts opts--2">
+      <div class="opt" data-s="5" data-v="Needs Major Work" onclick="pick(this)">
+        <img class="opt__img"
+          src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=500&q=75"
+          alt="Needs Major Work"
+          onerror="this.style.display='none'" />
+        <div class="opt__label">Needs Major Work</div>
+        <div class="opt__desc">Structural or major repairs needed</div>
+      </div>
+      <div class="opt" data-s="5" data-v="Needs Some Updates" onclick="pick(this)">
+        <img class="opt__img"
+          src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=500&q=75"
+          alt="Needs Some Updates"
+          onerror="this.style.display='none'" />
+        <div class="opt__label">Needs Some Updates</div>
+        <div class="opt__desc">Cosmetic or functional repairs</div>
+      </div>
+      <div class="opt" data-s="5" data-v="Good Condition" onclick="pick(this)">
+        <img class="opt__img"
+          src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=500&q=75"
+          alt="Good Condition"
+          onerror="this.style.display='none'" />
+        <div class="opt__label">Good Condition</div>
+        <div class="opt__desc">Well maintained, minor wear</div>
+      </div>
+      <div class="opt" data-s="5" data-v="Move-In Ready" onclick="pick(this)">
+        <img class="opt__img"
+          src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=500&q=75"
+          alt="Move-In Ready"
+          onerror="this.style.display='none'" />
+        <div class="opt__label">Move-In Ready</div>
+        <div class="opt__desc">Updated and in great shape</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 6: Year Built ── -->
+  <div class="step" id="s6">
+    <div class="step__num">Step 6 of 9</div>
+    <h1 class="step__q">When was the home built?</h1>
+    <p class="step__hint">Approximate is fine — just your best estimate.</p>
+    <div class="opts opts--list">
+      <div class="opt" data-s="6" data-v="Before 1940" onclick="pick(this)">
+        <div class="opt__label">Before 1940</div>
+        <div class="opt__desc">Historic / vintage home</div>
+      </div>
+      <div class="opt" data-s="6" data-v="1940 – 1959" onclick="pick(this)">
+        <div class="opt__label">1940 – 1959</div>
+      </div>
+      <div class="opt" data-s="6" data-v="1960 – 1979" onclick="pick(this)">
+        <div class="opt__label">1960 – 1979</div>
+      </div>
+      <div class="opt" data-s="6" data-v="1980 – 1999" onclick="pick(this)">
+        <div class="opt__label">1980 – 1999</div>
+      </div>
+      <div class="opt" data-s="6" data-v="2000 and above" onclick="pick(this)">
+        <div class="opt__label">2000 and Above</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 7: Timeline ── -->
+  <div class="step" id="s7">
+    <div class="step__num">Step 7 of 9</div>
+    <h1 class="step__q">How soon are you looking to sell?</h1>
+    <p class="step__hint">There's no wrong answer — we work on your timeline, not ours.</p>
+    <div class="opts">
+      <div class="opt" data-s="7" data-v="ASAP" onclick="pick(this)"
+        style="text-align:left; padding: 18px 22px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <span style="font-size:32px;">🔥</span>
+          <div>
+            <div class="opt__label">ASAP</div>
+            <div class="opt__desc">I need to sell as soon as possible</div>
+          </div>
+        </div>
+      </div>
+      <div class="opt" data-s="7" data-v="2–4 Weeks" onclick="pick(this)"
+        style="text-align:left; padding: 18px 22px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <span style="font-size:32px;">📅</span>
+          <div>
+            <div class="opt__label">2 – 4 Weeks</div>
+            <div class="opt__desc">I have a short window to work with</div>
+          </div>
+        </div>
+      </div>
+      <div class="opt" data-s="7" data-v="1–3 Months" onclick="pick(this)"
+        style="text-align:left; padding: 18px 22px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <span style="font-size:32px;">🗓️</span>
+          <div>
+            <div class="opt__label">1 – 3 Months</div>
+            <div class="opt__desc">I have some time to plan ahead</div>
+          </div>
+        </div>
+      </div>
+      <div class="opt" data-s="7" data-v="Flexible" onclick="pick(this)"
+        style="text-align:left; padding: 18px 22px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <span style="font-size:32px;">😌</span>
+          <div>
+            <div class="opt__label">Flexible</div>
+            <div class="opt__desc">No rush — just exploring my options</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEP 8: Price ── -->
+  <div class="step" id="s8">
+    <div class="step__num">Step 8 of 9</div>
+    <h1 class="step__q">What price are you hoping to get for your home?</h1>
+    <p class="step__hint">Given the current condition of the property — what would feel like a fair outcome for you?</p>
+    <div class="f-group">
+      <label class="f-label" for="inp-price">Your expected price</label>
+      <div class="price-wrap">
+        <span class="price-prefix">$</span>
+        <input type="text" id="inp-price" class="f-input price-input"
+          placeholder="Type your number..."
+          inputmode="numeric"
+          autocomplete="off" />
+      </div>
+      <p style="margin-top:10px; font-size:13px; color:var(--muted);">
+        Not sure? That's completely fine — just leave it blank and we'll give you an honest number.
+      </p>
+    </div>
+  </div>
+
+  <!-- ── STEP 9: Contact Info ── -->
+  <div class="step" id="s9">
+    <div class="step__num">Step 9 of 9 — Last Step!</div>
+    <h1 class="step__q">Almost there — where should we reach you?</h1>
+    <p class="step__hint">We'll look over your property details and give you a call. That's it — just a friendly conversation, nothing more.</p>
+
+    <div style="background:var(--beige-lt); border:1px solid var(--border); border-radius:12px; padding:18px 20px; margin-bottom:24px;">
+      <p style="font-size:13px; font-weight:700; color:var(--navy); margin-bottom:10px; text-transform:uppercase; letter-spacing:.06em;">Before you fill this in — know this:</p>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--text);">
+          <span style="color:var(--success); font-size:16px; flex-shrink:0;">✓</span>
+          <span><strong>No commitment whatsoever.</strong> Sharing your number doesn't mean you're selling anything.</span>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--text);">
+          <span style="color:var(--success); font-size:16px; flex-shrink:0;">✓</span>
+          <span><strong>You talk to the actual buyer.</strong> Not a call center. Not a salesperson. Just us.</span>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--text);">
+          <span style="color:var(--success); font-size:16px; flex-shrink:0;">✓</span>
+          <span><strong>You can say no at any point.</strong> If the offer doesn't work for you — no pressure, no hard feelings.</span>
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:10px; font-size:14px; color:var(--text);">
+          <span style="color:var(--success); font-size:16px; flex-shrink:0;">✓</span>
+          <span><strong>This is free.</strong> There are no fees for getting an offer, ever.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="f-group">
+      <label class="f-label" for="inp-name">Full Name <span style="color:#E53E3E;">*</span></label>
+      <input type="text" id="inp-name" class="f-input" placeholder="John Smith"
+        autocomplete="name" />
+    </div>
+    <div class="f-group">
+      <label class="f-label" for="inp-phone">Phone Number <span style="color:#E53E3E;">*</span></label>
+      <input type="tel" id="inp-phone" class="f-input" placeholder="(513) 555-0123"
+        autocomplete="tel" />
+    </div>
+    <div class="f-group">
+      <label class="f-label" for="inp-email">Email Address
+        <span style="font-weight:400; color:var(--muted);">(optional — for written confirmation)</span>
+      </label>
+      <input type="email" id="inp-email" class="f-input" placeholder="john@email.com"
+        autocomplete="email" />
+    </div>
+    <div class="f-group">
+      <label class="f-label" for="inp-notes">Anything else we should know?
+        <span style="font-weight:400; color:var(--muted);">(optional)</span>
+      </label>
+      <textarea id="inp-notes" class="f-input"
+        placeholder="Tell us about your situation, any details about the property, questions you have..."></textarea>
+    </div>
+  </div>
+
+</div><!-- /steps-wrap -->
+
+<!-- Thank You Screen -->
+<div id="thankYou">
+  <div style="max-width:520px; margin:0 auto;">
+    <div class="ty__check">✓</div>
+    <h1 class="ty__h1">We Got Your Information!</h1>
+    <p class="ty__p">
+      Thank you for reaching out. A real estate analyst at NAIMI LLC will personally
+      review your property details and call you within 24 hours.
+    </p>
+    <div class="ty__box">
+      <p>Prefer to talk now? Call us directly:</p>
+      <a href="tel:5134496085">(513) 449-6085</a>
+    </div>
+    <p style="font-size:14px; color:var(--muted); line-height:1.7; max-width:400px; margin:0 auto;">
+      No pressure. No scripts. Just an honest conversation about your home and what makes sense for you.
+    </p>
+    <br>
+    <a href="/" class="ty__back">← Back to homepage</a>
+  </div>
+</div>
+
+<!-- Bottom Navigation -->
+<div class="nav-bar" id="navBar">
+  <div class="nav-bar__in">
+    <button class="btn-back" id="btnBack" onclick="goBack()" title="Go back">←</button>
+    <button class="btn-next" id="btnNext" onclick="goNext()">Continue →</button>
+  </div>
+</div>
+
+<script>
+  // ── GOOGLE MAPS API KEY ─────────────────────────────────────────────────────
+  // console.cloud.google.com → Enable "Places API" → Credentials → API Key
+  // $200 free credit/month — covers thousands of searches at no charge
+  const GOOGLE_KEY = 'AIzaSyDNf-u_5gKAeiI0WUZaOf5ba_jFUwW3vl4';
+  // ───────────────────────────────────────────────────────────────────────────
+
+  const TOTAL = 9;
+  let cur = 1;
+  const data = {};
+  let addressValidated = false;
+  let acTimer = null;
+
+  // ── ADDRESS AUTOCOMPLETE (Radar.io) ────────────────────────────────────────
+  const addrInput    = document.getElementById('inp-addr');
+  const addrDropdown = document.getElementById('addrDropdown');
+  const addrOk       = document.getElementById('addrOk');
+  const addrErr      = document.getElementById('addrErr');
+
+
+  addrInput.addEventListener('input', function() {
+    addressValidated = false;
+    addrInput.classList.remove('confirmed');
+    addrOk.classList.remove('ok');
+    addrErr.classList.remove('bad');
+    const q = this.value.trim();
+    clearTimeout(acTimer);
+    if (!q || q.length < 3) { closeDropdown(); return; }
+    acTimer = setTimeout(() => fetchSuggestions(q), 200);
+  });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.addr-wrap')) closeDropdown();
+  });
+
+  addrDropdown.addEventListener('mousedown', function(e) {
+    e.preventDefault();
+    const opt = e.target.closest('.addr-opt');
+    if (opt) selectAddr(opt.dataset.short, opt.dataset.full);
+  });
+
+  addrDropdown.addEventListener('touchend', function(e) {
+    const opt = e.target.closest('.addr-opt');
+    if (opt) { e.preventDefault(); selectAddr(opt.dataset.short, opt.dataset.full); }
+  });
+
+  async function fetchSuggestions(q) {
+    if (!GOOGLE_KEY || GOOGLE_KEY === 'YOUR_GOOGLE_MAPS_API_KEY') return;
+    try {
+      const res = await fetch('https://places.googleapis.com/v1/places:autocomplete', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Goog-Api-Key': GOOGLE_KEY,
+        },
+        body: JSON.stringify({
+          input: q,
+          includedRegionCodes: ['us'],
+          includedPrimaryTypes: ['street_address', 'premise'],
+        })
+      });
+      const json = await res.json();
+      renderDropdown(json.suggestions || []);
+    } catch(e) { closeDropdown(); }
+  }
+
+  function renderDropdown(suggestions) {
+    const items = (suggestions || []).filter(s => s.placePrediction);
+    if (!items.length) { closeDropdown(); return; }
+    addrDropdown.innerHTML = items.map(s => {
+      const p    = s.placePrediction;
+      const main = p.structuredFormat?.mainText?.text || p.text?.text || '';
+      const city = p.structuredFormat?.secondaryText?.text || '';
+      const full = p.text?.text || main;
+      return `<div class="addr-opt"
+          data-short="${escHtml(full)}"
+          data-full="${escHtml(full)}">
+        <span class="addr-opt__pin">📍</span>
+        <div>
+          <div class="addr-opt__main">${escHtml(main)}</div>
+          <div class="addr-opt__full">${escHtml(city)}</div>
+        </div>
+      </div>`;
+    }).join('');
+    addrDropdown.style.display = 'block';
+  }
+
+  function selectAddr(short, full) {
+    addrInput.value = short || full;
+    closeDropdown();
+    addressValidated = true;
+    addrInput.classList.add('confirmed');
+    addrInput.classList.remove('err');
+    addrOk.classList.add('ok');
+    addrErr.classList.remove('bad');
+  }
+
+  function closeDropdown() {
+    addrDropdown.style.display = 'none';
+    addrDropdown.innerHTML = '';
+  }
+
+  function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // Pre-fill from URL param
+  (function() {
+    const p = new URLSearchParams(location.search);
+    const a = p.get('address') || p.get('addr');
+    if (a) addrInput.value = decodeURIComponent(a);
+  })();
+
+  function setProgress(n) {
+    document.getElementById('progFill').style.width = Math.round((n / TOTAL) * 100) + '%';
+  }
+
+  function refreshNav() {
+    const back = document.getElementById('btnBack');
+    const next = document.getElementById('btnNext');
+    back.disabled = cur === 1;
+
+    if (cur === TOTAL) {
+      next.textContent = '🏠  Get My Offer';
+      next.className = 'btn-submit';
+      next.onclick = submitForm;
+    } else {
+      next.textContent = 'Continue →';
+      next.className = 'btn-next';
+      next.onclick = goNext;
+    }
+    setProgress(cur);
+  }
+
+  function showStep(n) {
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    const el = document.getElementById('s' + n);
+    if (el) el.classList.add('active');
+    window.scrollTo(0, 0);
+    refreshNav();
+  }
+
+  // Price field — auto-format with commas as user types
+  document.getElementById('inp-price').addEventListener('input', function() {
+    const raw = this.value.replace(/[^0-9]/g, '');
+    this.value = raw ? Number(raw).toLocaleString('en-US') : '';
+  });
+
+  function goNext() {
+    if (cur === 8) {
+      const raw = document.getElementById('inp-price').value.replace(/[^0-9]/g, '');
+      data.s8 = raw ? '$' + Number(raw).toLocaleString('en-US') : 'Not specified';
+    }
+    if (cur === 1) {
+      const inp  = document.getElementById('inp-addr');
+      const val  = inp.value.trim();
+      const errEl = document.getElementById('addrErr');
+
+      if (!val) {
+        inp.classList.add('err');
+        errEl.textContent = '⚠ Please enter your property address to continue';
+        errEl.classList.add('bad');
+        inp.focus();
+        return;
+      }
+
+      // If Maps API is loaded, require a validated (dropdown-selected) address
+      const mapsLoaded = typeof google !== 'undefined' && google.maps;
+      if (mapsLoaded && !addressValidated) {
+        inp.classList.add('err');
+        errEl.textContent = '⚠ Please select your address from the dropdown suggestions';
+        errEl.classList.add('bad');
+        inp.focus();
+        return;
+      }
+
+      data.address = val;
+      errEl.classList.remove('bad');
+    }
+    if (cur === TOTAL) { submitForm(); return; }
+
+    cur++;
+    showStep(cur);
+  }
+
+  function goBack() {
+    if (cur <= 1) return;
+    cur--;
+    showStep(cur);
+  }
+
+  // Click on option card → select + auto-advance
+  function pick(el) {
+    const s = el.dataset.s;
+    document.querySelectorAll(`.opt[data-s="${s}"]`).forEach(o => o.classList.remove('sel'));
+    el.classList.add('sel');
+    data['s' + s] = el.dataset.v;
+    setTimeout(goNext, 320);
+  }
+
+  // Click on number button → select + auto-advance
+  function pickNum(el) {
+    const s = el.dataset.s;
+    document.querySelectorAll(`.num[data-s="${s}"]`).forEach(b => b.classList.remove('sel'));
+    el.classList.add('sel');
+    data['s' + s] = el.dataset.v;
+    setTimeout(goNext, 320);
+  }
+
+  // Prevent Enter from submitting before address is picked from dropdown
+  addrInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') e.preventDefault();
+  });
+
+  async function submitForm() {
+    const name  = document.getElementById('inp-name').value.trim();
+    const phone = document.getElementById('inp-phone').value.trim();
+    let valid = true;
+
+    ['inp-name', 'inp-phone'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.classList.add('err');
+        el.addEventListener('input', () => el.classList.remove('err'), { once: true });
+        valid = false;
+      }
+    });
+    if (!valid) return;
+
+    data.name  = name;
+    data.phone = phone;
+    data.email = document.getElementById('inp-email').value.trim();
+    data.notes = document.getElementById('inp-notes').value.trim();
+
+    const btn = document.getElementById('btnNext');
+    btn.textContent = 'Sending...';
+    btn.classList.add('loading');
+
+    const payload = {
+      _subject: `🏠 New Seller Lead — ${name} — ${data.address || 'No Address'}`,
+      _template: 'table',
+      _autoresponse: data.email
+        ? `Hi ${name}, we received your property details for ${data.address || 'your home'} and will be in touch within 24 hours. — NAIMI LLC (513) 449-6085`
+        : undefined,
+      'Full Name':       name,
+      'Phone':           phone,
+      'Email':           data.email || '—',
+      'Property Address':data.address || '—',
+      'Property Type':   data.s2 || '—',
+      'Bedrooms':        data.s3 || '—',
+      'Bathrooms':       data.s4 || '—',
+      'Condition':       data.s5 || '—',
+      'Year Built':      data.s6 || '—',
+      'Timeline':        data.s7 || '—',
+      'Price Range':     data.s8 || '—',
+      'Notes':           data.notes || '—',
+    };
+
+    // Remove undefined keys (autoresponse)
+    Object.keys(payload).forEach(k => payload[k] === undefined && delete payload[k]);
+
+    try {
+      await fetch('https://formsubmit.co/ajax/tomer7934@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch (_) {
+      // fail silently — still show thank you
+    }
+
+    showThankYou();
+  }
+
+  function showThankYou() {
+    document.getElementById('stepsWrap').style.display = 'none';
+    document.getElementById('navBar').style.display    = 'none';
+    document.getElementById('thankYou').classList.add('show');
+    document.getElementById('progFill').style.width = '100%';
+    window.scrollTo(0, 0);
+  }
+
+  // Init
+  refreshNav();
+</script>
+</body>
+</html>

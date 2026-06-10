@@ -170,6 +170,38 @@
       box-shadow: 0 8px 24px rgba(0,0,0,.25);
     }
 
+    /* ── HERO ADDRESS BOX ── */
+    .hero__addr-box {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      max-width: 600px; margin: 0 auto 10px;
+      background: rgba(255,255,255,.1);
+      border: 1.5px solid rgba(255,255,255,.25);
+      border-radius: 12px; padding: 8px;
+      backdrop-filter: blur(6px);
+    }
+    .hero__addr-input {
+      flex: 1; min-width: 0;
+      padding: 14px 16px;
+      border: none; border-radius: 8px;
+      font-family: var(--body); font-size: 16px; color: var(--text);
+      background: rgba(255,255,255,.96);
+      outline: none;
+    }
+    .hero__addr-input::placeholder { color: #9CA3AF; }
+    .hero__addr-btn {
+      white-space: nowrap;
+      padding: 14px 22px !important;
+      font-size: 16px !important;
+    }
+    .hero__addr-sub {
+      font-size: 12px; color: rgba(255,255,255,.6);
+      margin-bottom: 4px; letter-spacing: .02em;
+    }
+    @media(max-width:540px){
+      .hero__addr-box { flex-direction: column; padding: 10px; }
+      .hero__addr-btn { width: 100%; text-align: center; }
+    }
+
     /* HERO FORM CARD (kept for potential future use) */
     .hero__form-wrap { display: none; }
     .form-card {
@@ -519,7 +551,7 @@
     </div>
     <div class="nav__right">
       <a href="tel:5134496085" class="nav__phone">(513) 449-6085</a>
-      <a href="#contact" class="btn" style="padding:11px 20px;font-size:14px;">Get a Direct Offer</a>
+      <a href="form.html" class="btn" style="padding:11px 20px;font-size:14px;">Get a Direct Offer</a>
     </div>
   </div>
 </nav>
@@ -544,9 +576,10 @@
         A clear, respectful process — from your first call to closing day.
       </p>
       <div class="hero__btns">
-        <a href="#contact" class="btn-hero">Get a Direct Offer →</a>
+        <a href="form.html" class="btn-hero">Get a Direct Offer →</a>
         <a href="tel:5134496085" class="btn-ghost">📞 &nbsp;(513) 449-6085</a>
       </div>
+      <p class="hero__addr-sub">Takes about 3 minutes &nbsp;·&nbsp; Free &nbsp;·&nbsp; No obligation</p>
 
     </div>
   </div>
@@ -571,34 +604,6 @@
       <div>
         <div class="stat__num">100%</div>
         <div class="stat__label">Title Company Closings</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ HOME PHOTOS ════════════════════════════════════════════════ -->
-<div class="homes">
-  <div class="container">
-    <div class="s-head text-center" style="margin-bottom:36px;">
-      <p class="s-label">Greater Cincinnati Area</p>
-      <h2 class="s-title">We Buy Homes Like These</h2>
-      <p class="s-intro mx-auto" style="text-align:center;">Move-in ready or in need of work — we buy homes as-is throughout Greater Cincinnati and the surrounding area.</p>
-    </div>
-    <div class="homes__grid">
-      <div class="home-img">
-        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=700&q=80"
-          alt="Cincinnati home — purchased as-is" loading="lazy" />
-        <span class="home-img__label">Cincinnati, OH</span>
-      </div>
-      <div class="home-img">
-        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=700&q=80"
-          alt="Greater Cincinnati home" loading="lazy" />
-        <span class="home-img__label">Norwood, OH</span>
-      </div>
-      <div class="home-img">
-        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=700&q=80"
-          alt="Cincinnati neighborhood home" loading="lazy" />
-        <span class="home-img__label">Anderson Township, OH</span>
       </div>
     </div>
   </div>
@@ -636,11 +641,11 @@
       <p class="s-intro mx-auto" style="text-align:center;">Three steps. One conversation at a time. No pressure at any point.</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="step__line"></div><div class="step__num">01</div><p class="step__title">Tell us about your home</p><p class="step__body">Reach out by phone or form. A few simple questions — no inspection, no obligation. Just a conversation.</p></div>
-      <div class="step"><div class="step__line"></div><div class="step__num">02</div><p class="step__title">Receive a direct offer</p><p class="step__body">A clear, fair offer — no lowball tactics, no hidden fees. An honest number you can say yes or no to.</p></div>
-      <div class="step"><div class="step__num">03</div><p class="step__title">Close on your timeline</p><p class="step__body">We move forward on your schedule, working with a licensed title company until you walk away with peace of mind.</p></div>
+      <div class="step"><div class="step__line"></div><div class="step__num">01</div><p class="step__title">Fill out a short form — 3 minutes</p><p class="step__body">Answer a few simple questions about your property. No inspections, no phone calls needed yet. Takes about 3 minutes.</p></div>
+      <div class="step"><div class="step__line"></div><div class="step__num">02</div><p class="step__title">Get a direct price offer</p><p class="step__body">We review your details and come back with a clear, honest offer — no lowball tactics, no hidden fees. Just a real number.</p></div>
+      <div class="step"><div class="step__num">03</div><p class="step__title">Close easily, on your timeline</p><p class="step__body">You decide if and when. We close on your schedule through a licensed title company — no pressure, no rush.</p></div>
     </div>
-    <p class="process__note">That's it. No surprises. No runaround. Just a process that respects your time and your home.</p>
+    <p class="process__note">That's it. No agents. No strangers. No surprises. Just a process built around you.</p>
   </div>
 </section>
 
@@ -700,7 +705,7 @@
       </div>
       <p class="reviews__count">Based on <strong>125 homeowner reviews</strong> · Greater Cincinnati Area</p>
       <div style="margin-top:28px;">
-        <a href="#contact" class="btn btn-lg">Get Your Direct Offer</a>
+        <a href="form.html" class="btn btn-lg">Get Your Direct Offer</a>
       </div>
     </div>
   </div>
@@ -790,7 +795,7 @@
           <p><strong>We don't just buy homes. We help people move forward.</strong></p>
         </div>
         <div style="margin-top:28px;">
-          <a href="#contact" class="btn">Talk to Us About Your Home</a>
+          <a href="form.html" class="btn">Talk to Us About Your Home</a>
         </div>
       </div>
 
@@ -821,6 +826,34 @@
   </div>
 </section>
 
+<!-- ═══ HOME PHOTOS ════════════════════════════════════════════════ -->
+<div class="homes">
+  <div class="container">
+    <div class="s-head text-center" style="margin-bottom:36px;">
+      <p class="s-label">Real Deals, Real Homes</p>
+      <h2 class="s-title">Homes We've Purchased</h2>
+      <p class="s-intro mx-auto" style="text-align:center;">These are actual homes we bought directly from homeowners — no agents, no repairs required, no hassle. Every deal closed on the seller's timeline.</p>
+    </div>
+    <div class="homes__grid">
+      <div class="home-img">
+        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=700&q=80"
+          alt="Home purchased in Cincinnati, OH" loading="lazy" />
+        <span class="home-img__label">West Price Hill, Cincinnati</span>
+      </div>
+      <div class="home-img">
+        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=700&q=80"
+          alt="Home purchased in Norwood, OH" loading="lazy" />
+        <span class="home-img__label">Norwood, OH</span>
+      </div>
+      <div class="home-img">
+        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=700&q=80"
+          alt="Home purchased in Anderson Township, OH" loading="lazy" />
+        <span class="home-img__label">Anderson Township, OH</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ FAQ ═══════════════════════════════════════════════════════ -->
 <section class="faq" id="faq">
   <div class="container">
@@ -836,80 +869,6 @@
       <details><summary>Is there any cost or obligation when I reach out?</summary><p class="faq__ans">None at all. Reaching out is free, and so is the offer. There's no pressure to accept, and no fee if you decide it's not the right fit. We'd rather have an honest conversation.</p></details>
       <details><summary>What types of properties do you buy?</summary><p class="faq__ans">Single-family homes throughout the Greater Cincinnati area — move-in ready or in need of significant work. Inherited properties, vacant homes, rentals, homes with deferred maintenance — all welcome.</p></details>
       <details><summary>What does "closing through a title company" mean for me?</summary><p class="faq__ans">A neutral, licensed third party handles the legal transfer of the property. Your ownership is protected, documents are properly executed, and you receive your funds securely. Same as any standard real estate transaction — just without the agent fees.</p></details>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CONTACT ════════════════════════════════════════════════════ -->
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="s-head text-center">
-      <p class="s-label">Let's Start the Conversation</p>
-      <h2 class="s-title">Ready to Talk?</h2>
-      <p class="s-intro mx-auto" style="text-align:center;">Tell us about your home and we'll reach out within 24 hours. No pressure. No obligation.</p>
-    </div>
-
-    <!-- Motivation box -->
-    <div style="max-width:600px;margin:0 auto 28px;background:var(--beige-lt);border:1px solid var(--border);border-radius:14px;padding:28px 28px 24px;">
-      <p style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;">Why reach out?</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div style="display:flex;align-items:flex-start;gap:10px;">
-          <span style="font-size:18px;flex-shrink:0;">✅</span>
-          <span style="font-size:14px;color:var(--text-sec);line-height:1.5;">Completely free — no cost, no commitment</span>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:10px;">
-          <span style="font-size:18px;flex-shrink:0;">✅</span>
-          <span style="font-size:14px;color:var(--text-sec);line-height:1.5;">We respond within 24 hours</span>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:10px;">
-          <span style="font-size:18px;flex-shrink:0;">✅</span>
-          <span style="font-size:14px;color:var(--text-sec);line-height:1.5;">No repairs, no cleaning — any condition</span>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:10px;">
-          <span style="font-size:18px;flex-shrink:0;">✅</span>
-          <span style="font-size:14px;color:var(--text-sec);line-height:1.5;">You talk directly to the buyer — not an assistant</span>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:10px;">
-          <span style="font-size:18px;flex-shrink:0;">✅</span>
-          <span style="font-size:14px;color:var(--text-sec);line-height:1.5;">No agent fees — keep more of your money</span>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:10px;">
-          <span style="font-size:18px;flex-shrink:0;">✅</span>
-          <span style="font-size:14px;color:var(--text-sec);line-height:1.5;">Say no anytime — zero pressure, ever</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="contact__card">
-      <form action="#" method="POST">
-        <div class="form-group">
-          <label class="form-label" for="c-name">First &amp; Last Name <span style="color:#E53E3E;">*</span></label>
-          <input class="form-input" type="text" id="c-name" name="name" placeholder="Your full name" required />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="c-addr">Property Address <span style="color:#E53E3E;">*</span></label>
-          <input class="form-input" type="text" id="c-addr" name="address" placeholder="Street address, Cincinnati area" required />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="c-phone">Phone Number <span style="color:#E53E3E;">*</span></label>
-          <input class="form-input" type="tel" id="c-phone" name="phone" placeholder="(XXX) XXX-XXXX" required />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="c-email">Email <span style="color:#9CA3AF;font-weight:400;">(optional)</span></label>
-          <input class="form-input" type="email" id="c-email" name="email" placeholder="your@email.com" />
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="c-msg">Anything you'd like us to know?</label>
-          <textarea class="form-input" id="c-msg" name="message" placeholder="Share any details about the property or your situation — completely optional."></textarea>
-        </div>
-        <div class="form-submit" style="margin-top:24px;">
-          <button type="submit" class="btn btn-full" style="font-size:17px;padding:17px;">Get a Direct Offer →</button>
-        </div>
-      </form>
-      <p class="contact__below">
-        Prefer to call? <a href="tel:5134496085">(513) 449-6085</a><br>
-        No scripts. No salespeople. Just us.
-      </p>
     </div>
   </div>
 </section>
@@ -937,7 +896,7 @@
   display:flex; gap:10px; align-items:center; justify-content:center;
   box-shadow:0 -3px 16px rgba(0,0,0,.18);
 ">
-  <a href="#contact" class="btn" style="flex:1;max-width:220px;padding:13px 16px;font-size:15px;text-align:center;">Get a Direct Offer</a>
+  <a href="form.html" class="btn" style="flex:1;max-width:220px;padding:13px 16px;font-size:15px;text-align:center;">Get a Direct Offer</a>
   <a href="tel:5134496085" style="flex:1;max-width:180px;background:rgba(255,255,255,.1);color:#fff;font-weight:700;font-size:15px;text-align:center;padding:13px 16px;border-radius:8px;border:1.5px solid rgba(255,255,255,.25);">📞 Call Us</a>
 </div>
 <style>

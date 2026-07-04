@@ -660,6 +660,8 @@
   // console.cloud.google.com → Enable "Places API" → Credentials → API Key
   // $200 free credit/month — covers thousands of searches at no charge
   const GOOGLE_KEY = 'AIzaSyDNf-u_5gKAeiI0WUZaOf5ba_jFUwW3vl4';
+  // Google Sheets endpoint — Apps Script Web App URL (ends with /exec)
+  const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwk0eAZYG5MP9YEyHkJUiSkL3d3RHvbdNCsycr4bXVRZvFfrGMzSZrlXm37G9pqI3u6/exec';
   // ───────────────────────────────────────────────────────────────────────────
 
   const TOTAL = 9;
@@ -916,6 +918,7 @@
     // Remove undefined keys (autoresponse)
     Object.keys(payload).forEach(k => payload[k] === undefined && delete payload[k]);
 
+    // 1) Email notification (proven path — must not break).
     try {
       await fetch('https://formsubmit.co/ajax/tomer7934@gmail.com', {
         method: 'POST',
@@ -924,6 +927,17 @@
       });
     } catch (_) {
       // fail silently — still show thank you
+    }
+
+    // 2) Save into the Google Sheet (fire-and-forget; email above is the
+    //    guaranteed channel, so a database hiccup never loses a lead).
+    if (SHEET_ENDPOINT) {
+      fetch(SHEET_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      }).catch(() => {});
     }
 
     showThankYou();

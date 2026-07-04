@@ -899,7 +899,7 @@
       _subject: `🏠 New Seller Lead — ${name} — ${data.address || 'No Address'}`,
       _template: 'table',
       _autoresponse: data.email
-        ? `Hi ${name}, we received your property details for ${data.address || 'your home'} and will be in touch within 24 hours. — NAIMI LLC (513) 449-6085`
+        ? `Hi ${name},\n\nThank you so much for reaching out to NAIMI LLC — and for trusting us with ${data.address ? `your home at ${data.address}` : 'your home'}. That means a lot to us.\n\nWe've received your details, and a real person from our team (not a call center) will personally reach out to you very soon — usually within a few hours. There's absolutely no obligation and no pressure — just a straightforward, friendly conversation about your options.\n\nIf it's easier for you, feel free to call or text us anytime at (513) 449-6085. We're always happy to hear from you.\n\nTalk soon,\nThe NAIMI LLC Team\n(513) 449-6085`
         : undefined,
       'Full Name':       name,
       'Phone':           phone,

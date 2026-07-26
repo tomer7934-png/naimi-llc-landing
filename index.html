@@ -258,12 +258,12 @@
     .stat__label { font-size: 12px; color: rgba(255,255,255,.7); margin-top: 4px; font-weight: 500; letter-spacing: .03em; }
 
     /* ── SECTION HELPERS ── */
-    section { padding: 72px 0; }
+    section { padding: 54px 0; }
     .s-label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
     .s-title { font-size: 28px; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
     @media(min-width:768px){ .s-title { font-size: 36px; } }
     .s-intro { font-size: 16px; color: var(--text-sec); line-height: 1.8; max-width: 640px; }
-    .s-head  { margin-bottom: 48px; }
+    .s-head  { margin-bottom: 34px; }
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
 
@@ -325,7 +325,7 @@
     .link-cta:hover { color: var(--blue); border-color: var(--blue); }
 
     /* ── PROCESS ── */
-    .process { background: var(--navy); padding: 72px 0; }
+    .process { background: var(--navy); }
     .process .s-label { color: var(--beige); }
     .process .s-title { color: #fff; }
     .process .s-intro { color: rgba(255,255,255,.72); }
@@ -524,33 +524,29 @@
     .footer__ph a { color: var(--blue); font-weight: 700; font-size: 15px; }
     .footer__copy { font-size: 11px; color: rgba(255,255,255,.25); margin-top: 6px; }
 
-    /* ── PAIN LIST (Sound Familiar?) ── */
-    .pain { background: var(--white); }
-    .pain__list { max-width: 760px; margin: 0 auto; }
-    .pain-item {
-      display: flex; gap: 16px; align-items: flex-start;
-      padding: 18px 0; border-bottom: 1px solid var(--border);
+    /* ── RUNAROUND vs CALMER WAY (compact two-column contrast) ── */
+    .vs { background: var(--white); }
+    .vs__grid {
+      display: grid; grid-template-columns: 1fr; gap: 18px;
+      max-width: 980px; margin: 0 auto;
     }
-    .pain-item:last-child { border-bottom: none; }
-    .pain-item__mark {
-      flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
-      background: #FBEAE7; color: #B4453A; font-weight: 700; font-size: 14px;
-      display: flex; align-items: center; justify-content: center; margin-top: 2px;
+    @media(min-width:800px){ .vs__grid { grid-template-columns: 1fr 1fr; } }
+    .vs__col { border-radius: 14px; padding: 26px 24px; }
+    .vs__col--pain { background: #FBF5F3; border: 1px solid #EAD9D3; }
+    .vs__col--turn { background: var(--beige-lt); border: 2px solid var(--navy); }
+    .vs__col-title { font-weight: 700; font-size: 15px; margin-bottom: 12px; letter-spacing: .01em; }
+    .vs__col--pain .vs__col-title { color: #9A4A3F; }
+    .vs__col--turn .vs__col-title { color: var(--navy); }
+    .vs-item { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; }
+    .vs-item__mark {
+      flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+      font-weight: 700; font-size: 13px; margin-top: 1px;
+      display: flex; align-items: center; justify-content: center;
     }
-    .pain-item__title { font-weight: 700; color: var(--navy); font-size: 16px; margin-bottom: 4px; }
-    .pain-item__body  { font-size: 14.5px; color: var(--text-sec); line-height: 1.7; }
-
-    /* ── THE TURN (There's a Calmer Way) ── */
-    .turn { background: var(--beige-lt); }
-    .turn__list { max-width: 760px; margin: 0 auto; }
-    .turn-item { display: flex; gap: 16px; align-items: flex-start; padding: 13px 0; }
-    .turn-item__mark {
-      flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
-      background: var(--navy); color: #fff; font-weight: 700; font-size: 14px;
-      display: flex; align-items: center; justify-content: center; margin-top: 2px;
-    }
-    .turn-item__text { font-size: 16px; color: var(--text-sec); line-height: 1.7; }
-    .turn-item__text strong { color: var(--navy); }
+    .vs__col--pain .vs-item__mark { background: #F3DDD7; color: #B4453A; }
+    .vs__col--turn .vs-item__mark { background: var(--navy); color: #fff; }
+    .vs-item__text { font-size: 14.5px; color: var(--text-sec); line-height: 1.55; }
+    .vs-item__text strong { color: var(--navy); }
 
     /* ── REAL PROOF (North Bend) ── */
     .proof { background: var(--white); }
@@ -570,7 +566,7 @@
     .fi-1 { animation-delay:.1s; }
     .fi-2 { animation-delay:.2s; }
 
-    @media(max-width:768px){ section { padding: 52px 0; } }
+    @media(max-width:768px){ section { padding: 42px 0; } }
   </style>
 </head>
 <body>
@@ -614,6 +610,10 @@
         <a href="tel:5134496085" class="btn-ghost">Call (513) 449-6085</a>
       </div>
       <p class="hero__addr-sub">Takes about 3 minutes &nbsp;·&nbsp; Free &nbsp;·&nbsp; No obligation</p>
+      <a href="#" id="videoTeaser" style="display:none;align-items:center;gap:10px;margin:18px auto 0;color:#fff;font-weight:600;font-size:15px;justify-content:center;">
+        <span style="width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.65);display:flex;align-items:center;justify-content:center;font-size:13px;padding-left:3px;">▶</span>
+        <span style="border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px;">Watch what we do — 60 seconds</span>
+      </a>
 
     </div>
   </div>
@@ -643,71 +643,33 @@
   </div>
 </div>
 
-<!-- ═══ PAIN — SOUND FAMILIAR? ════════════════════════════════════ -->
-<section class="pain" id="pain">
+<!-- ═══ THE RUNAROUND vs THE CALMER WAY ═══════════════════════════ -->
+<section class="vs" id="pain">
   <div class="container">
-    <div class="s-head text-center">
+    <div class="s-head text-center" style="margin-bottom:32px;">
       <p class="s-label">Sound Familiar?</p>
-      <h2 class="s-title">If You've Tried to Sell, You've Probably Been Through This</h2>
-      <p class="s-intro mx-auto" style="text-align:center;">Most homeowners who reach out to us have already been through the runaround. Maybe this sounds like your week:</p>
+      <h2 class="s-title">You've Seen the Runaround. Here's the Difference.</h2>
     </div>
-    <div class="pain__list">
-      <div class="pain-item">
-        <div class="pain-item__mark">✗</div>
-        <div>
-          <p class="pain-item__title">The calls that never stop</p>
-          <p class="pain-item__body">Twenty different "investors" calling and texting — all promising cash, all wanting a piece of your home.</p>
-        </div>
+    <div class="vs__grid">
+      <div class="vs__col vs__col--pain">
+        <p class="vs__col-title">Selling to "investors" usually looks like this:</p>
+        <div class="vs-item"><div class="vs-item__mark">✗</div><p class="vs-item__text"><strong>The calls never stop.</strong> Twenty "investors" texting, all wanting a piece.</p></div>
+        <div class="vs-item"><div class="vs-item__mark">✗</div><p class="vs-item__text"><strong>Strangers tour your home.</strong> Showings, weekend after weekend.</p></div>
+        <div class="vs-item"><div class="vs-item__mark">✗</div><p class="vs-item__text"><strong>Your contract gets flipped.</strong> They tie up your house, then shop it to other investors.</p></div>
+        <div class="vs-item"><div class="vs-item__mark">✗</div><p class="vs-item__text"><strong>Your home ends up on Facebook.</strong> Address and photos blasted to buyer groups.</p></div>
+        <div class="vs-item"><div class="vs-item__mark">✗</div><p class="vs-item__text"><strong>The offer keeps shrinking.</strong> Talked down once they think they've got you.</p></div>
       </div>
-      <div class="pain-item">
-        <div class="pain-item__mark">✗</div>
-        <div>
-          <p class="pain-item__title">Strangers walking through your home</p>
-          <p class="pain-item__body">Showings and walkthroughs, weekend after weekend, while you wait and wonder if any of them are serious.</p>
-        </div>
-      </div>
-      <div class="pain-item">
-        <div class="pain-item__mark">✗</div>
-        <div>
-          <p class="pain-item__title">The contract that gets flipped</p>
-          <p class="pain-item__body">A wholesaler ties up your house with a contract — then quietly shops it around to other investors. You never know who's actually buying.</p>
-        </div>
-      </div>
-      <div class="pain-item">
-        <div class="pain-item__mark">✗</div>
-        <div>
-          <p class="pain-item__title">Your home all over Facebook</p>
-          <p class="pain-item__body">Your property — your address, your photos — blasted across investor groups for the whole world to pick apart.</p>
-        </div>
-      </div>
-      <div class="pain-item">
-        <div class="pain-item__mark">✗</div>
-        <div>
-          <p class="pain-item__title">Getting talked down, worn down</p>
-          <p class="pain-item__body">The "offer" keeps shrinking once they think they've got you. Suddenly the number you shook hands on isn't the number at the table.</p>
-        </div>
+      <div class="vs__col vs__col--turn">
+        <p class="vs__col-title">Selling to NAIMI looks like this:</p>
+        <div class="vs-item"><div class="vs-item__mark">✓</div><p class="vs-item__text"><strong>One person — the actual buyer.</strong> Not a call center, not a middleman.</p></div>
+        <div class="vs-item"><div class="vs-item__mark">✓</div><p class="vs-item__text"><strong>Our own funds.</strong> We never flip your contract.</p></div>
+        <div class="vs-item"><div class="vs-item__mark">✓</div><p class="vs-item__text"><strong>No showings. No strangers.</strong> Your home stays yours until closing.</p></div>
+        <div class="vs-item"><div class="vs-item__mark">✓</div><p class="vs-item__text"><strong>A fair number that doesn't shrink.</strong> No games at the table.</p></div>
+        <div class="vs-item"><div class="vs-item__mark">✓</div><p class="vs-item__text"><strong>Completely private.</strong> Never posted, never shared.</p></div>
+        <div class="vs-item"><div class="vs-item__mark">✓</div><p class="vs-item__text"><strong>On your timeline.</strong> We work around your life.</p></div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ═══ THE TURN — A CALMER WAY ═══════════════════════════════════ -->
-<section class="turn" id="calmer">
-  <div class="container">
-    <div class="s-head text-center">
-      <p class="s-label">There's a Calmer Way</p>
-      <h2 class="s-title">Selling Your Home Doesn't Have to Feel Like That</h2>
-      <p class="s-intro mx-auto" style="text-align:center;">Here's what working with us actually looks like:</p>
-    </div>
-    <div class="turn__list">
-      <div class="turn-item"><div class="turn-item__mark">✓</div><p class="turn-item__text"><strong>You deal with one person — the actual buyer.</strong> Not a call center. Not a middleman. The person you talk to is the person buying your home.</p></div>
-      <div class="turn-item"><div class="turn-item__mark">✓</div><p class="turn-item__text"><strong>We buy with our own funds — and never flip your contract.</strong> Your deal stays with us from the first call to the closing table.</p></div>
-      <div class="turn-item"><div class="turn-item__mark">✓</div><p class="turn-item__text"><strong>No showings. No strangers.</strong> Your home stays your home until closing day.</p></div>
-      <div class="turn-item"><div class="turn-item__mark">✓</div><p class="turn-item__text"><strong>A fair, honest number.</strong> No shrinking offers, no games, no grinding you down.</p></div>
-      <div class="turn-item"><div class="turn-item__mark">✓</div><p class="turn-item__text"><strong>Completely private.</strong> No public listing, no Facebook posts, no address floating around investor groups.</p></div>
-      <div class="turn-item"><div class="turn-item__mark">✓</div><p class="turn-item__text"><strong>On your timeline.</strong> Inherited a home, done being a landlord, relocating, or just ready to move on — we work around your life, not the other way.</p></div>
-    </div>
-    <div class="text-center" style="margin-top:40px;">
+    <div class="text-center" style="margin-top:34px;">
       <a href="form.html" class="btn btn-lg">Get a Direct Offer</a>
       <p style="font-size:13px;color:var(--text-sec);margin-top:12px;">Takes about 3 minutes · Free · No obligation</p>
     </div>
@@ -763,22 +725,10 @@
             <td class="naimi"><span class="ck">✓</span> Zero — no fees, no commissions</td>
           </tr>
           <tr>
-            <td>Repairs required?</td>
-            <td><span class="xk">✗</span> Must fix before listing</td>
-            <td>Varies — depends on end buyer</td>
-            <td class="naimi"><span class="ck">✓</span> Never — any condition, as-is</td>
-          </tr>
-          <tr>
             <td>Showings</td>
             <td><span class="xk">✗</span> Dozens of strangers in your home</td>
             <td>Usually none</td>
             <td class="naimi"><span class="ck">✓</span> None — ever</td>
-          </tr>
-          <tr>
-            <td>Timeline</td>
-            <td><span class="xk">✗</span> 3–6+ months, uncertain</td>
-            <td>Fast, but unpredictable</td>
-            <td class="naimi"><span class="ck">✓</span> Clear — on your schedule</td>
           </tr>
           <tr>
             <td>Your deal goes to</td>
@@ -791,12 +741,6 @@
             <td><span class="xk">✗</span> Public listing, photos everywhere</td>
             <td><span class="xk">✗</span> Blasted to Facebook buyer groups</td>
             <td class="naimi"><span class="ck">✓</span> Private — never posted anywhere</td>
-          </tr>
-          <tr>
-            <td>Closing handled by</td>
-            <td>Licensed title company</td>
-            <td>Sometimes unclear</td>
-            <td class="naimi"><span class="ck">✓</span> Always a licensed title company</td>
           </tr>
         </tbody>
       </table>
@@ -813,10 +757,8 @@
         <p class="s-label">Meet the Buyer</p>
         <h2 class="s-title">Hi, I'm Tomer. When You Call — It's Me Who Answers.</h2>
         <div class="about__body" style="margin-top:24px;">
-          <p>NAIMI LLC is my family's business. We're not a call center, and we're not a nationwide wholesaling operation.</p>
-          <p>We're a small family company that buys homes directly in Greater Cincinnati — with our own funds, under our own name.</p>
-          <p>When you reach out, you're not talking to a salesperson reading a script. You're talking to the person actually buying your home. I'll listen to your situation, be straight with you about what we can offer, and walk with you from your first question to closing day.</p>
-          <p>Every deal we do closes through a licensed title company — so your interests are protected and the paperwork is done right.</p>
+          <p>NAIMI LLC is my family's business. We're not a call center, and we're not a nationwide wholesaling operation — we're a small family company that buys homes directly in Greater Cincinnati, with our own funds, under our own name.</p>
+          <p>When you reach out, you're talking to the person actually buying your home. I'll listen, be straight with you about what we can offer, and walk with you from your first question to closing day — with every deal closed through a licensed title company.</p>
           <p><strong>We keep this business small on purpose. That's how it stays honest, personal, and simple.</strong></p>
           <p class="sig-name">Tomer Naimi</p>
           <p class="sig-role">Founder &amp; Buyer · NAIMI LLC</p>
@@ -862,14 +804,13 @@
           <img src="images/northbend-home.jpg"
             alt="The home NAIMI LLC purchased on West North Bend Road, Cincinnati" loading="lazy" />
         </div>
-        <p class="proof__cap">Actual photo · Our current project on West North Bend Road, Cincinnati</p>
+        <p class="proof__cap">Actual photo · Our current project at 2235 W North Bend Rd, Cincinnati</p>
       </div>
       <div>
         <p class="s-label">Real Proof — Not Stock Photos</p>
         <h2 class="s-title">The Home We're Working On Right Now</h2>
         <div class="about__body" style="margin-top:20px;">
-          <p>This is a real house on <strong>West North Bend Road in Cincinnati</strong>. We bought it directly, as-is, with our own funds — and we're renovating it right now.</p>
-          <p>No wholesaler flipped this contract. No listing, no showings, no strangers parading through. Just a straightforward purchase, closed through a licensed title company.</p>
+          <p>This is a real house at <strong>2235 W North Bend Rd, Cincinnati</strong>. We bought it directly, as-is, with our own funds — and we're renovating it right now. No wholesaler flipped this contract. No listing, no showings — just a straightforward purchase, closed through a licensed title company.</p>
           <p><strong>We'd rather show you one real home than a wall of stock photos.</strong> This is what we actually do — and your home could be our next project.</p>
         </div>
         <div style="margin-top:26px;">
@@ -893,10 +834,7 @@
       <details><summary>Will strangers be walking through my home?</summary><p class="faq__ans">No showings, no open houses, no parade of "potential buyers." At most, one respectful visit from us — the actual buyer — arranged at a time that works for you. That's it.</p></details>
       <details><summary>How do you come up with your offer?</summary><p class="faq__ans">We look at the property's current condition, comparable sales in your area, and what repairs or updates would be needed. Our goal is a fair offer that works for both sides — not a lowball number designed to take advantage of your situation.</p></details>
       <details><summary>Do I need to make repairs or clean up before selling?</summary><p class="faq__ans">No. We buy homes as-is. You don't need to fix anything, clean anything out, or make the home "show ready." Leave what you don't want — we'll handle the rest.</p></details>
-      <details><summary>How long does the process take?</summary><p class="faq__ans">It depends on your timeline, not ours. We can move quickly when needed, or give you the space you need. Once both sides agree on terms, closing typically takes a few weeks through a licensed title company.</p></details>
       <details><summary>Is there any cost or obligation when I reach out?</summary><p class="faq__ans">None at all. Reaching out is free, and so is the offer. There's no pressure to accept, and no fee if you decide it's not the right fit. We'd rather have an honest conversation.</p></details>
-      <details><summary>What types of properties do you buy?</summary><p class="faq__ans">Single-family homes throughout the Greater Cincinnati area — move-in ready or in need of significant work. Inherited properties, vacant homes, rentals, homes with deferred maintenance — all welcome.</p></details>
-      <details><summary>What does "closing through a title company" mean for me?</summary><p class="faq__ans">A neutral, licensed third party handles the legal transfer of the property. Your ownership is protected, documents are properly executed, and you receive your funds securely. Same as any standard real estate transaction — just without the agent fees.</p></details>
     </div>
   </div>
 </section>
@@ -935,6 +873,40 @@
   /* add bottom padding on mobile so footer isn't hidden */
   @media(max-width:900px){ body { padding-bottom: 80px; } }
 </style>
+
+<!-- ═══ VIDEO MODAL (activates once VIDEO_URL below is set) ═══════ -->
+<div id="videoModal" style="display:none;position:fixed;inset:0;z-index:400;background:rgba(10,18,40,.88);align-items:center;justify-content:center;padding:20px;">
+  <div style="position:relative;width:100%;max-width:860px;">
+    <button id="videoClose" aria-label="Close video" style="position:absolute;top:-42px;right:0;background:none;border:none;color:#fff;font-size:32px;cursor:pointer;line-height:1;">×</button>
+    <div style="position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000;">
+      <iframe id="videoFrame" src="" title="NAIMI LLC — what we do"
+        style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+        allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Paste the YouTube EMBED url here when the video is ready,
+  // e.g. 'https://www.youtube.com/embed/VIDEO_ID'. Empty = play button hidden.
+  const VIDEO_URL = '';
+
+  (function () {
+    if (!VIDEO_URL) return;
+    const teaser = document.getElementById('videoTeaser');
+    const modal  = document.getElementById('videoModal');
+    const frame  = document.getElementById('videoFrame');
+    teaser.style.display = 'inline-flex';
+    teaser.addEventListener('click', function (e) {
+      e.preventDefault();
+      frame.src = VIDEO_URL + '?autoplay=1&rel=0';
+      modal.style.display = 'flex';
+    });
+    const close = function () { modal.style.display = 'none'; frame.src = ''; };
+    document.getElementById('videoClose').addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+  })();
+</script>
 
 </body>
 </html>

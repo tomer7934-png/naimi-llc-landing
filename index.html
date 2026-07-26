@@ -85,23 +85,16 @@
       text-align: center;
       overflow: hidden;
     }
-    /* Single-family neighborhood street background */
+    /* Clean navy gradient — no stock photography, nothing generic */
+    .hero {
+      background: linear-gradient(168deg, var(--navy-dark) 0%, var(--navy) 58%, #24478F 100%);
+    }
     .hero::before {
       content: '';
       position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1592595896551-12b371d546d5?auto=format&fit=crop&w=1600&q=80');
-      background-size: cover;
-      background-position: center 55%;
-      opacity: 0.22;
-    }
-    /* Gradient overlay — darker at top, lighter at bottom for depth */
-    .hero::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg,
-        rgba(15,34,86,.55) 0%,
-        rgba(27,58,122,.40) 60%,
-        rgba(27,58,122,.65) 100%);
+      background:
+        radial-gradient(ellipse 55% 45% at 82% 8%,  rgba(91,155,213,.16), transparent 65%),
+        radial-gradient(ellipse 45% 38% at 12% 95%, rgba(212,184,150,.10), transparent 65%);
     }
     .hero__center {
       position: relative; z-index: 1;
@@ -531,6 +524,46 @@
     .footer__ph a { color: var(--blue); font-weight: 700; font-size: 15px; }
     .footer__copy { font-size: 11px; color: rgba(255,255,255,.25); margin-top: 6px; }
 
+    /* ── PAIN LIST (Sound Familiar?) ── */
+    .pain { background: var(--white); }
+    .pain__list { max-width: 760px; margin: 0 auto; }
+    .pain-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 18px 0; border-bottom: 1px solid var(--border);
+    }
+    .pain-item:last-child { border-bottom: none; }
+    .pain-item__mark {
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+      background: #FBEAE7; color: #B4453A; font-weight: 700; font-size: 14px;
+      display: flex; align-items: center; justify-content: center; margin-top: 2px;
+    }
+    .pain-item__title { font-weight: 700; color: var(--navy); font-size: 16px; margin-bottom: 4px; }
+    .pain-item__body  { font-size: 14.5px; color: var(--text-sec); line-height: 1.7; }
+
+    /* ── THE TURN (There's a Calmer Way) ── */
+    .turn { background: var(--beige-lt); }
+    .turn__list { max-width: 760px; margin: 0 auto; }
+    .turn-item { display: flex; gap: 16px; align-items: flex-start; padding: 13px 0; }
+    .turn-item__mark {
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+      background: var(--navy); color: #fff; font-weight: 700; font-size: 14px;
+      display: flex; align-items: center; justify-content: center; margin-top: 2px;
+    }
+    .turn-item__text { font-size: 16px; color: var(--text-sec); line-height: 1.7; }
+    .turn-item__text strong { color: var(--navy); }
+
+    /* ── REAL PROOF (North Bend) ── */
+    .proof { background: var(--white); }
+    .proof__in { display: grid; grid-template-columns: 1fr; gap: 36px; align-items: center; }
+    @media(min-width:900px){ .proof__in { grid-template-columns: 48% 52%; gap: 56px; } }
+    .proof__img { border-radius: 14px; overflow: hidden; box-shadow: 0 10px 36px rgba(27,58,122,.14); }
+    .proof__img img { width: 100%; display: block; }
+    .proof__cap { font-size: 12.5px; color: #9CA3AF; margin-top: 10px; text-align: center; }
+
+    /* ── SIGNATURE ── */
+    .sig-name { font-family: var(--head); font-size: 25px; color: var(--navy); font-style: italic; margin-top: 16px; }
+    .sig-role { font-size: 12.5px; color: var(--text-sec); margin-top: 2px; letter-spacing: .03em; }
+
     /* ── FADE ANIMATION ── */
     @keyframes fadeUp { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:none;} }
     .fi   { animation: fadeUp .6s ease both; }
@@ -567,17 +600,18 @@
         <div class="hero__logo-sub">Real Estate Investment &amp; Partnership &nbsp;·&nbsp; Greater Cincinnati</div>
       </div>
 
-      <p class="hero__tag">Direct Home Buyers</p>
+      <p class="hero__tag">Family-Owned Direct Home Buyers</p>
       <h1 class="hero__h1">
-        Sell Your Home Directly<br>to a Real Buyer.
+        We're the Buyer.<br>Not Another Wholesaler.
       </h1>
       <p class="hero__sub">
-        No agents. No commissions. No strangers walking through your property.<br>
-        A clear, respectful process — from your first call to closing day.
+        We're a small family business in Greater Cincinnati. We buy your home directly,
+        with our own funds — no middlemen, no showings, no games.<br>
+        Simple, private, and honest.
       </p>
       <div class="hero__btns">
         <a href="form.html" class="btn-hero">Get a Direct Offer →</a>
-        <a href="tel:5134496085" class="btn-ghost">📞 &nbsp;(513) 449-6085</a>
+        <a href="tel:5134496085" class="btn-ghost">Call (513) 449-6085</a>
       </div>
       <p class="hero__addr-sub">Takes about 3 minutes &nbsp;·&nbsp; Free &nbsp;·&nbsp; No obligation</p>
 
@@ -609,25 +643,73 @@
   </div>
 </div>
 
-<!-- ═══ WHO IT'S FOR ═══════════════════════════════════════════════ -->
-<section class="who" id="who">
+<!-- ═══ PAIN — SOUND FAMILIAR? ════════════════════════════════════ -->
+<section class="pain" id="pain">
   <div class="container">
-    <div class="s-head">
-      <p class="s-label">Is This You?</p>
-      <h2 class="s-title">You're in the Right Place</h2>
-      <p class="s-intro">You don't have to fit a mold to work with us. If any of these sound familiar — we might be exactly what you're looking for.</p>
+    <div class="s-head text-center">
+      <p class="s-label">Sound Familiar?</p>
+      <h2 class="s-title">If You've Tried to Sell, You've Probably Been Through This</h2>
+      <p class="s-intro mx-auto" style="text-align:center;">Most homeowners who reach out to us have already been through the runaround. Maybe this sounds like your week:</p>
     </div>
-    <div class="cards">
-      <div class="card"><div class="card__ico">🏠</div><p class="card__title">You want to sell without the long wait</p><p class="card__body">The thought of 3–6 months of showings and uncertainty just doesn't work for you right now.</p></div>
-      <div class="card"><div class="card__ico">💸</div><p class="card__title">You'd rather keep the commission</p><p class="card__body">Why pay 6–8% to an agent when you can sell directly — and keep that money in your pocket?</p></div>
-      <div class="card"><div class="card__ico">🚪</div><p class="card__title">You don't want strangers in your home</p><p class="card__body">Your home is personal. Dozens of people touring it every weekend doesn't feel right.</p></div>
-      <div class="card"><div class="card__ico">🤝</div><p class="card__title">You want to talk to the actual buyer</p><p class="card__body">You've seen the signs and ads. You just want to know you're talking to the real buyer — not a middleman.</p></div>
-      <div class="card"><div class="card__ico">🔧</div><p class="card__title">Your property needs work — we don't care</p><p class="card__body">Fire damage, deferred maintenance, outdated systems, hoarder situations — we buy in <strong>any condition, as-is</strong>. No repairs. No cleaning. Nothing.</p></div>
-      <div class="card"><div class="card__ico">📦</div><p class="card__title">Life brought you to this moment</p><p class="card__body">Inherited a property. Tired landlord. Relocating. Whatever the reason — we're here to help, not judge.</p></div>
+    <div class="pain__list">
+      <div class="pain-item">
+        <div class="pain-item__mark">✗</div>
+        <div>
+          <p class="pain-item__title">The calls that never stop</p>
+          <p class="pain-item__body">Twenty different "investors" calling and texting — all promising cash, all wanting a piece of your home.</p>
+        </div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-item__mark">✗</div>
+        <div>
+          <p class="pain-item__title">Strangers walking through your home</p>
+          <p class="pain-item__body">Showings and walkthroughs, weekend after weekend, while you wait and wonder if any of them are serious.</p>
+        </div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-item__mark">✗</div>
+        <div>
+          <p class="pain-item__title">The contract that gets flipped</p>
+          <p class="pain-item__body">A wholesaler ties up your house with a contract — then quietly shops it around to other investors. You never know who's actually buying.</p>
+        </div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-item__mark">✗</div>
+        <div>
+          <p class="pain-item__title">Your home all over Facebook</p>
+          <p class="pain-item__body">Your property — your address, your photos — blasted across investor groups for the whole world to pick apart.</p>
+        </div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-item__mark">✗</div>
+        <div>
+          <p class="pain-item__title">Getting talked down, worn down</p>
+          <p class="pain-item__body">The "offer" keeps shrinking once they think they've got you. Suddenly the number you shook hands on isn't the number at the table.</p>
+        </div>
+      </div>
     </div>
-    <div class="who__foot">
-      <p class="who__note">If you're nodding your head — let's have a conversation. No pressure, no obligation.</p>
-      <a href="tel:5134496085" class="link-cta">Call us now → (513) 449-6085</a>
+  </div>
+</section>
+
+<!-- ═══ THE TURN — A CALMER WAY ═══════════════════════════════════ -->
+<section class="turn" id="calmer">
+  <div class="container">
+    <div class="s-head text-center">
+      <p class="s-label">There's a Calmer Way</p>
+      <h2 class="s-title">Selling Your Home Doesn't Have to Feel Like That</h2>
+      <p class="s-intro mx-auto" style="text-align:center;">Here's what working with us actually looks like:</p>
+    </div>
+    <div class="turn__list">
+      <div class="turn-item"><div class="turn-item__mark">✓</div><p class="turn-item__text"><strong>You deal with one person — the actual buyer.</strong> Not a call center. Not a middleman. The person you talk to is the person buying your home.</p></div>
+      <div class="turn-item"><div class="turn-item__mark">✓</div><p class="turn-item__text"><strong>We buy with our own funds — and never flip your contract.</strong> Your deal stays with us from the first call to the closing table.</p></div>
+      <div class="turn-item"><div class="turn-item__mark">✓</div><p class="turn-item__text"><strong>No showings. No strangers.</strong> Your home stays your home until closing day.</p></div>
+      <div class="turn-item"><div class="turn-item__mark">✓</div><p class="turn-item__text"><strong>A fair, honest number.</strong> No shrinking offers, no games, no grinding you down.</p></div>
+      <div class="turn-item"><div class="turn-item__mark">✓</div><p class="turn-item__text"><strong>Completely private.</strong> No public listing, no Facebook posts, no address floating around investor groups.</p></div>
+      <div class="turn-item"><div class="turn-item__mark">✓</div><p class="turn-item__text"><strong>On your timeline.</strong> Inherited a home, done being a landlord, relocating, or just ready to move on — we work around your life, not the other way.</p></div>
+    </div>
+    <div class="text-center" style="margin-top:40px;">
+      <a href="form.html" class="btn btn-lg">Get a Direct Offer</a>
+      <p style="font-size:13px;color:var(--text-sec);margin-top:12px;">Takes about 3 minutes · Free · No obligation</p>
     </div>
   </div>
 </section>
@@ -646,68 +728,6 @@
       <div class="step"><div class="step__num">03</div><p class="step__title">Close easily, on your timeline</p><p class="step__body">You decide if and when. We close on your schedule through a licensed title company — no pressure, no rush.</p></div>
     </div>
     <p class="process__note">That's it. No agents. No strangers. No surprises. Just a process built around you.</p>
-  </div>
-</section>
-
-<!-- ═══ TESTIMONIALS ═══════════════════════════════════════════════ -->
-<section class="reviews" id="reviews">
-  <div class="container">
-    <div class="s-head text-center">
-      <p class="s-label">What Homeowners Say</p>
-      <h2 class="s-title">Real Sellers. Real Experiences.</h2>
-      <p class="s-intro mx-auto" style="text-align:center;">Every homeowner's situation is different. Here's what a few of them said about working with us.</p>
-    </div>
-
-    <div class="reviews__grid">
-
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-text">"I inherited my mother's home and had no idea what to do with it. NAIMI LLC made the whole process feel manageable. They were patient, explained everything clearly, and never pressured me. We closed in three weeks. I couldn't have asked for a better experience."</p>
-        <div class="reviewer">
-          <div class="reviewer__avatar">MS</div>
-          <div>
-            <div class="reviewer__name">Margaret S.</div>
-            <div class="reviewer__loc">Cincinnati, OH · Inherited Property</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-text">"We'd been renting out our property for years and just got tired of dealing with everything that comes with it. We called NAIMI LLC on a Tuesday, had an offer by Thursday, and closed without any of the usual headaches. Straightforward and professional the whole way."</p>
-        <div class="reviewer">
-          <div class="reviewer__avatar">DR</div>
-          <div>
-            <div class="reviewer__name">David & Karen R.</div>
-            <div class="reviewer__loc">Norwood, OH · Tired Landlords</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p class="review-text">"I was relocating for work and needed to sell fast. I was nervous about dealing with investors, but NAIMI LLC was completely different from what I expected — honest, respectful, and easy to communicate with. They worked around my timeline and made it stress-free."</p>
-        <div class="reviewer">
-          <div class="reviewer__avatar">JT</div>
-          <div>
-            <div class="reviewer__name">James T.</div>
-            <div class="reviewer__loc">Anderson Township, OH · Relocation</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="reviews__summary">
-      <div class="reviews__rating">
-        <span class="stars">★★★★★</span>
-        <span>5.0 out of 5</span>
-      </div>
-      <p class="reviews__count">Based on <strong>125 homeowner reviews</strong> · Greater Cincinnati Area</p>
-      <div style="margin-top:28px;">
-        <a href="form.html" class="btn btn-lg">Get Your Direct Offer</a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -767,6 +787,12 @@
             <td class="naimi"><span class="ck">✓</span> Stays with us — no middlemen</td>
           </tr>
           <tr>
+            <td>Your home online</td>
+            <td><span class="xk">✗</span> Public listing, photos everywhere</td>
+            <td><span class="xk">✗</span> Blasted to Facebook buyer groups</td>
+            <td class="naimi"><span class="ck">✓</span> Private — never posted anywhere</td>
+          </tr>
+          <tr>
             <td>Closing handled by</td>
             <td>Licensed title company</td>
             <td>Sometimes unclear</td>
@@ -784,15 +810,16 @@
   <div class="container">
     <div class="about__in">
       <div class="about__text">
-        <p class="s-label">Who We Are</p>
-        <h2 class="s-title">Real People. Real Buyers. Based in Greater Cincinnati.</h2>
+        <p class="s-label">Meet the Buyer</p>
+        <h2 class="s-title">Hi, I'm Tomer. When You Call — It's Me Who Answers.</h2>
         <div class="about__body" style="margin-top:24px;">
-          <p>At NAIMI LLC, we're not a call center. We're not a nationwide wholesaling operation.</p>
-          <p>We're a small, local real estate investment company that buys homes directly — and we take that responsibility seriously.</p>
-          <p>When you reach out to us, you're talking to the actual buyer. Someone who will listen, be straight with you, and walk with you through the entire process — from your first question to the day you close.</p>
-          <p>We work exclusively in the Greater Cincinnati area because we know this market, we care about this community, and we believe every homeowner deserves a process built around their situation — not ours.</p>
-          <p>Every transaction is closed through a licensed title company. Your interests are protected, the paperwork is handled correctly, and there are no surprises at the finish line.</p>
-          <p><strong>We don't just buy homes. We help people move forward.</strong></p>
+          <p>NAIMI LLC is my family's business. We're not a call center, and we're not a nationwide wholesaling operation.</p>
+          <p>We're a small family company that buys homes directly in Greater Cincinnati — with our own funds, under our own name.</p>
+          <p>When you reach out, you're not talking to a salesperson reading a script. You're talking to the person actually buying your home. I'll listen to your situation, be straight with you about what we can offer, and walk with you from your first question to closing day.</p>
+          <p>Every deal we do closes through a licensed title company — so your interests are protected and the paperwork is done right.</p>
+          <p><strong>We keep this business small on purpose. That's how it stays honest, personal, and simple.</strong></p>
+          <p class="sig-name">Tomer Naimi</p>
+          <p class="sig-role">Founder &amp; Buyer · NAIMI LLC</p>
         </div>
         <div style="margin-top:28px;">
           <a href="form.html" class="btn">Talk to Us About Your Home</a>
@@ -800,13 +827,13 @@
       </div>
 
       <div class="about__right">
-        <div class="about__img">
-          <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=700&q=80"
-            alt="Cincinnati area home — direct purchase" loading="lazy" />
+        <div class="about__img" style="aspect-ratio:4/5;">
+          <img src="images/tomer.jpg"
+            alt="Tomer Naimi — founder and direct home buyer, NAIMI LLC" loading="lazy" />
         </div>
         <div style="background:var(--beige-lt);border-radius:12px;padding:24px;text-align:center;border:1px solid var(--border);">
-          <div style="font-family:var(--head);font-size:22px;font-weight:700;color:var(--navy);">NAIMI LLC</div>
-          <div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-top:5px;">Direct Home Buyers · Cincinnati, OH</div>
+          <div style="font-family:var(--head);font-size:22px;font-weight:700;color:var(--navy);">Tomer Naimi</div>
+          <div style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-top:5px;">NAIMI LLC · Direct Home Buyers · Cincinnati, OH</div>
           <div style="height:1px;background:var(--border);margin:16px 0;"></div>
           <a href="tel:5134496085" style="font-weight:700;color:var(--navy);font-size:16px;">(513) 449-6085</a>
         </div>
@@ -817,42 +844,41 @@
   <div class="trust-bar" style="margin-top:64px;">
     <div class="container">
       <div class="trust-bar__in">
-        <div class="tsig"><span class="tsig__ico">📍</span><span>Based in Greater Cincinnati, Ohio</span></div>
-        <div class="tsig"><span class="tsig__ico">🤝</span><span>We are the direct buyer — not a middleman</span></div>
-        <div class="tsig"><span class="tsig__ico">🏛️</span><span>Every deal closed through a licensed title company</span></div>
-        <div class="tsig"><span class="tsig__ico">📞</span><span>Real conversations — <a href="tel:5134496085" style="color:var(--blue);font-weight:700;">(513) 449-6085</a></span></div>
+        <div class="tsig"><span class="tsig__ico" style="color:var(--beige);font-weight:700;">✓</span><span>Family-owned · Greater Cincinnati only</span></div>
+        <div class="tsig"><span class="tsig__ico" style="color:var(--beige);font-weight:700;">✓</span><span>We are the direct buyer — never a middleman</span></div>
+        <div class="tsig"><span class="tsig__ico" style="color:var(--beige);font-weight:700;">✓</span><span>Every deal closed through a licensed title company</span></div>
+        <div class="tsig"><span class="tsig__ico" style="color:var(--beige);font-weight:700;">✓</span><span>Real conversations — <a href="tel:5134496085" style="color:var(--blue);font-weight:700;">(513) 449-6085</a></span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ HOME PHOTOS ════════════════════════════════════════════════ -->
-<div class="homes">
+<!-- ═══ REAL PROOF — NORTH BEND ═══════════════════════════════════ -->
+<section class="proof" id="proof">
   <div class="container">
-    <div class="s-head text-center" style="margin-bottom:36px;">
-      <p class="s-label">Real Deals, Real Homes</p>
-      <h2 class="s-title">Homes We've Purchased</h2>
-      <p class="s-intro mx-auto" style="text-align:center;">These are actual homes we bought directly from homeowners — no agents, no repairs required, no hassle. Every deal closed on the seller's timeline.</p>
-    </div>
-    <div class="homes__grid">
-      <div class="home-img">
-        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=700&q=80"
-          alt="Home purchased in Cincinnati, OH" loading="lazy" />
-        <span class="home-img__label">West Price Hill, Cincinnati</span>
+    <div class="proof__in">
+      <div>
+        <div class="proof__img">
+          <img src="images/northbend-home.jpg"
+            alt="The home NAIMI LLC purchased on West North Bend Road, Cincinnati" loading="lazy" />
+        </div>
+        <p class="proof__cap">Actual photo · Our current project on West North Bend Road, Cincinnati</p>
       </div>
-      <div class="home-img">
-        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=700&q=80"
-          alt="Home purchased in Norwood, OH" loading="lazy" />
-        <span class="home-img__label">Norwood, OH</span>
-      </div>
-      <div class="home-img">
-        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=700&q=80"
-          alt="Home purchased in Anderson Township, OH" loading="lazy" />
-        <span class="home-img__label">Anderson Township, OH</span>
+      <div>
+        <p class="s-label">Real Proof — Not Stock Photos</p>
+        <h2 class="s-title">The Home We're Working On Right Now</h2>
+        <div class="about__body" style="margin-top:20px;">
+          <p>This is a real house on <strong>West North Bend Road in Cincinnati</strong>. We bought it directly, as-is, with our own funds — and we're renovating it right now.</p>
+          <p>No wholesaler flipped this contract. No listing, no showings, no strangers parading through. Just a straightforward purchase, closed through a licensed title company.</p>
+          <p><strong>We'd rather show you one real home than a wall of stock photos.</strong> This is what we actually do — and your home could be our next project.</p>
+        </div>
+        <div style="margin-top:26px;">
+          <a href="form.html" class="btn">Get a Direct Offer</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ═══ FAQ ═══════════════════════════════════════════════════════ -->
 <section class="faq" id="faq">
@@ -863,6 +889,8 @@
     </div>
     <div class="faq__list">
       <details><summary>Are you actually the buyer, or will my home be passed to someone else?</summary><p class="faq__ans">We are the direct, final buyer. NAIMI LLC purchases homes for our own portfolio — we are not wholesalers, and we don't resell your contract to other investors. When you work with us, you work with us.</p></details>
+      <details><summary>Will my home be posted on Facebook or shared with investor groups?</summary><p class="faq__ans">Never. That's what wholesalers do — they blast your address and photos to buyer lists and Facebook groups, hoping someone bites. We're the end buyer, so there's nothing to advertise. Your sale stays completely private, from the first call to closing.</p></details>
+      <details><summary>Will strangers be walking through my home?</summary><p class="faq__ans">No showings, no open houses, no parade of "potential buyers." At most, one respectful visit from us — the actual buyer — arranged at a time that works for you. That's it.</p></details>
       <details><summary>How do you come up with your offer?</summary><p class="faq__ans">We look at the property's current condition, comparable sales in your area, and what repairs or updates would be needed. Our goal is a fair offer that works for both sides — not a lowball number designed to take advantage of your situation.</p></details>
       <details><summary>Do I need to make repairs or clean up before selling?</summary><p class="faq__ans">No. We buy homes as-is. You don't need to fix anything, clean anything out, or make the home "show ready." Leave what you don't want — we'll handle the rest.</p></details>
       <details><summary>How long does the process take?</summary><p class="faq__ans">It depends on your timeline, not ours. We can move quickly when needed, or give you the space you need. Once both sides agree on terms, closing typically takes a few weeks through a licensed title company.</p></details>
@@ -897,7 +925,7 @@
   box-shadow:0 -3px 16px rgba(0,0,0,.18);
 ">
   <a href="form.html" class="btn" style="flex:1;max-width:220px;padding:13px 16px;font-size:15px;text-align:center;">Get a Direct Offer</a>
-  <a href="tel:5134496085" style="flex:1;max-width:180px;background:rgba(255,255,255,.1);color:#fff;font-weight:700;font-size:15px;text-align:center;padding:13px 16px;border-radius:8px;border:1.5px solid rgba(255,255,255,.25);">📞 Call Us</a>
+  <a href="tel:5134496085" style="flex:1;max-width:180px;background:rgba(255,255,255,.1);color:#fff;font-weight:700;font-size:15px;text-align:center;padding:13px 16px;border-radius:8px;border:1.5px solid rgba(255,255,255,.25);">Call Us</a>
 </div>
 <style>
   /* hide sticky bar on desktop */
